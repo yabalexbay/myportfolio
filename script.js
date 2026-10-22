@@ -1,31 +1,69 @@
 /* ================================================
-   YABETSE PORTFOLIO - script.js
+   YABETSE TESFAYE ALEMU PORTFOLIO - script.js
    ================================================ */
+
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 
 /* ---------- HERO INTRO: typing + signature logo ---------- */
 const ROLE_TEXT = 'Full-Stack & Systems Engineer';
 const roleEl = document.getElementById('role-typing');
 const logoEl = document.getElementById('logo-sig');
 
-let roleTimer = null;
+const ROLE_SPEED = 68;        // ms per character
+let roleFrame = null;
 
-/* Type the role once, from empty, then stop. */
-function typeRole() {
+/* Type the role once, from empty, then stop.
+   Driven off the frame clock rather than a chain of setTimeouts: a timeout
+   chain drifts under load and lands characters unevenly, which is what made
+   the line stutter. Here the character count is derived from elapsed time, so
+   the cadence stays even, and the DOM is only touched when the count actually
+   changes. The span is also held at the line's full width (see --role-len),
+   so characters appear in place instead of shunting the centred line sideways
+   on every keystroke. */
+/* Reserve exactly the finished line's width. Counting `ch` undershoots it -
+   letter-spacing is not part of a character cell - and the line wrapped, so
+   measure the real thing at the current font size instead. */
+function measureRoleWidth() {
   if (!roleEl) return;
-  if (roleTimer) clearTimeout(roleTimer);
-  roleEl.textContent = '';
-  let i = 0;
-  const step = () => {
-    roleEl.textContent = ROLE_TEXT.slice(0, i);
-    if (i <= ROLE_TEXT.length) {
-      i++;
-      roleTimer = setTimeout(step, 55);
-    }
-  };
-  step();
+  const prev = roleEl.textContent;
+  roleEl.style.width = 'auto';
+  roleEl.textContent = ROLE_TEXT;
+  const w = Math.ceil(roleEl.getBoundingClientRect().width) + 1;
+  roleEl.style.width = '';
+  roleEl.style.setProperty('--role-len', w + 'px');
+  roleEl.textContent = prev;
 }
 
-/* Replay the cursive signature write-on animation. */
+if (roleEl) {
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(measureRoleWidth);
+  window.addEventListener('resize', measureRoleWidth);
+}
+
+function typeRole() {
+  if (!roleEl) return;
+  if (roleFrame) cancelAnimationFrame(roleFrame);
+
+  measureRoleWidth();
+  roleEl.textContent = '';
+  if (REDUCED) { roleEl.textContent = ROLE_TEXT; return; }
+
+  const started = performance.now();
+  let shown = -1;
+
+  const step = (now) => {
+    const i = Math.min(ROLE_TEXT.length, Math.floor((now - started) / ROLE_SPEED));
+    if (i !== shown) {
+      shown = i;
+      roleEl.textContent = ROLE_TEXT.slice(0, i);
+    }
+    roleFrame = i < ROLE_TEXT.length ? requestAnimationFrame(step) : null;
+  };
+  roleFrame = requestAnimationFrame(step);
+}
+
+/* Replay the signature write-on. The underline shares the same keyframe
+   timing, so both edges travel across the logo together. */
 function playSignature() {
   if (!logoEl) return;
   logoEl.classList.remove('play');
@@ -37,12 +75,6 @@ function playHeroIntro() {
   playSignature();
   typeRole();
 }
-
-window.addEventListener('load', playHeroIntro);
-/* Fallback in case load already fired */
-document.addEventListener('DOMContentLoaded', () => {
-  if (document.readyState === 'complete') playHeroIntro();
-});
 
 /* Replay the intro when the user scrolls back to the top after going down. */
 let scrolledAway = false;
@@ -56,149 +88,264 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 
-/* ---------- THEME TOGGLE + LIVE FAVICON ---------- */
+/* ---------- LOADING SCREEN ----------
+   Runs on every load: the ring and bar fill while the build log ticks
+   over, then the whole panel dissolves into the hero. */
+(function preloader() {
+  const root = document.getElementById('preloader');
+  if (!root) { playHeroIntro(); return; }
+
+  const arcEl     = document.getElementById('pre-arc');
+  const fillEl    = document.getElementById('pre-fill');
+  const statusEl  = document.getElementById('pre-status');
+  const modulesEl = document.getElementById('pre-modules');
+  const pctEl     = document.getElementById('pre-pct');
+
+  const STAGES = [
+    { at:  0, text: 'initializing interface' },
+    { at: 14, text: 'compiling design tokens' },
+    { at: 30, text: 'loading project archive' },
+    { at: 48, text: 'warming the inference layer' },
+    { at: 64, text: 'linking systems telemetry' },
+    { at: 80, text: 'calibrating scroll timeline' },
+    { at: 94, text: 'ready' },
+  ];
+
+  const TOTAL_MODULES = 12;
+  const ARC_LENGTH    = 364.4;              // 2 * PI * r, r = 58
+  const DURATION      = REDUCED ? 600 : 2600;
+
+  let finished = false;
+  let pageReady = document.readyState === 'complete';
+  window.addEventListener('load', () => { pageReady = true; });
+
+  let stage = -1;
+  function paint(p) {
+    const pct = Math.round(p);
+    if (fillEl) fillEl.style.width = pct + '%';
+    if (arcEl)  arcEl.style.strokeDashoffset = ARC_LENGTH * (1 - p / 100);
+    if (pctEl)  pctEl.textContent = pct + '%';
+    if (modulesEl) {
+      const done = Math.min(TOTAL_MODULES, Math.round((p / 100) * TOTAL_MODULES));
+      modulesEl.textContent = 'modules ' + String(done).padStart(2, '0') + ' / ' + TOTAL_MODULES;
+    }
+    for (let i = STAGES.length - 1; i >= 0; i--) {
+      if (pct >= STAGES[i].at) {
+        if (stage !== i) { stage = i; if (statusEl) statusEl.textContent = STAGES[i].text; }
+        break;
+      }
+    }
+  }
+
+  function dismiss() {
+    if (finished) return;
+    finished = true;
+    document.body.classList.remove('preloading');
+    playHeroIntro();
+    setTimeout(() => root.classList.add('gone'), 950);
+  }
+
+  const started = performance.now();
+  function frame(now) {
+    const t = Math.min((now - started) / DURATION, 1);
+    paint((1 - Math.pow(1 - t, 2.2)) * 100);
+    if (t < 1) { requestAnimationFrame(frame); return; }
+    // Sit at 100% until the page itself is ready, but never stall forever.
+    const holdStarted = performance.now();
+    (function hold() {
+      if (pageReady || performance.now() - holdStarted > 2000) {
+        setTimeout(dismiss, REDUCED ? 0 : 320);
+      } else {
+        requestAnimationFrame(hold);
+      }
+    })();
+  }
+  paint(0);
+  requestAnimationFrame(frame);
+
+  // Hard safety net: never trap the visitor behind the loader.
+  setTimeout(dismiss, 7000);
+})();
+
+
+/* ---------- FULL NAME REVEAL ----------
+   The last name unfolds by animating max-width. Guessing that width in `ch`
+   overshot the real word, so the easing spent its last stretch travelling past
+   text that had already finished moving - which is what read as a stutter.
+   Measuring the word and handing the exact px to CSS makes the curve land
+   right on it. Re-measured once the display webfont swaps in, and on resize. */
+const heroName = document.getElementById('hero-name');
+if (heroName) {
+  const lastEl = heroName.querySelector('.nm-last');
+
+  function measureLastName() {
+    if (!lastEl) return;
+    const w = lastEl.scrollWidth;           // full content width despite max-width: 0
+    if (w > 0) heroName.style.setProperty('--last-w', w + 'px');
+  }
+
+  measureLastName();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(measureLastName);
+  window.addEventListener('resize', measureLastName);
+
+  // Tap support on touch devices, where there is no hover.
+  heroName.addEventListener('click', () => heroName.classList.toggle('show-last'));
+}
+
+
+/* ---------- THEME: light -> dark -> system ----------
+   The inline head script already resolved and painted the mode before first
+   paint; this mirrors it into the toggle and cycles it on click. */
 const themeToggle = document.getElementById('theme-toggle');
 const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-const faviconLink = document.querySelector('link[rel="icon"]');
+const THEME_KEY = 'folio-theme';
+const THEME_MODES = ['light', 'dark', 'system'];
+const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
 
-/* The brand "y" mark is drawn on a canvas so it can smoothly morph between the
-   dark palette (dark bg, cream y) and the light palette (white bg, black y)
-   as the in-page theme toggle flips. The lime dot stays constant. */
-const faviconCanvas = document.createElement('canvas');
-faviconCanvas.width = faviconCanvas.height = 64;
-
-const FAV_BG_DARK = [16, 17, 9],    FAV_BG_LIGHT = [255, 255, 255];
-const FAV_Y_DARK  = [243, 240, 231], FAV_Y_LIGHT  = [16, 17, 9];
-const FAV_DOT     = 'rgb(155,224,0)';
-
-function favMix(a, b, t) {
-  const c = i => Math.round(a[i] + (b[i] - a[i]) * t);
-  return `rgb(${c(0)},${c(1)},${c(2)})`;
-}
-
-function favRoundRect(ctx, x, y, w, h, r) {
-  if (ctx.roundRect) { ctx.beginPath(); ctx.roundRect(x, y, w, h, r); return; }
-  ctx.beginPath();
-  ctx.moveTo(x + r, y);
-  ctx.arcTo(x + w, y,     x + w, y + h, r);
-  ctx.arcTo(x + w, y + h, x,     y + h, r);
-  ctx.arcTo(x,     y + h, x,     y,     r);
-  ctx.arcTo(x,     y,     x + w, y,     r);
-  ctx.closePath();
-}
-
-/* t = 0 -> dark theme, t = 1 -> light theme */
-function drawFavicon(t) {
-  if (!faviconLink) return;
-  const ctx = faviconCanvas.getContext('2d');
-  const S = faviconCanvas.width;
-  ctx.clearRect(0, 0, S, S);
-  ctx.save();
-  ctx.scale(S / 512, S / 512);
-  // squircle background
-  ctx.fillStyle = favMix(FAV_BG_DARK, FAV_BG_LIGHT, t);
-  favRoundRect(ctx, 0, 0, 512, 512, 128);
-  ctx.fill();
-  // script "y"
-  ctx.strokeStyle = favMix(FAV_Y_DARK, FAV_Y_LIGHT, t);
-  ctx.lineWidth = 48;
-  ctx.lineCap = 'round';
-  ctx.lineJoin = 'round';
-  ctx.beginPath();
-  ctx.moveTo(150, 156); ctx.lineTo(245, 300);
-  ctx.moveTo(340, 156); ctx.lineTo(245, 300);
-  ctx.bezierCurveTo(243, 362, 236, 398, 168, 400);
-  ctx.stroke();
-  // lime dot
-  ctx.fillStyle = FAV_DOT;
-  ctx.beginPath();
-  ctx.arc(372, 322, 40, 0, Math.PI * 2);
-  ctx.fill();
-  ctx.restore();
-  faviconLink.type = 'image/png';
-  faviconLink.href = faviconCanvas.toDataURL('image/png');
-}
-
-let faviconT = 0;
-let faviconAnim = null;
-function animateFavicon(target) {
-  if (faviconAnim) cancelAnimationFrame(faviconAnim);
-  const start = faviconT;
-  const t0 = performance.now();
-  const dur = 450;
-  function step(now) {
-    const p = Math.min((now - t0) / dur, 1);
-    const e = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2; // easeInOutQuad
-    faviconT = start + (target - start) * e;
-    drawFavicon(faviconT);
-    faviconAnim = p < 1 ? requestAnimationFrame(step) : null;
+function applyTheme(mode) {
+  const resolved = mode === 'system' ? (systemDark.matches ? 'dark' : 'light') : mode;
+  document.documentElement.dataset.theme = resolved;
+  document.documentElement.dataset.themeMode = mode;
+  if (themeToggle) {
+    themeToggle.dataset.mode = mode;
+    themeToggle.setAttribute('aria-label', 'Theme: ' + mode + ' (click to switch)');
+    themeToggle.setAttribute('title', 'Theme: ' + mode);
   }
-  faviconAnim = requestAnimationFrame(step);
+  if (themeColorMeta) {
+    themeColorMeta.setAttribute('content', resolved === 'dark' ? '#080c12' : '#f8fbff');
+  }
 }
 
-function applyThemeChrome(isLight) {
-  if (themeColorMeta) themeColorMeta.setAttribute('content', isLight ? '#f6f6f4' : '#09090b');
-}
+let themeMode = document.documentElement.dataset.themeMode || 'system';
+if (THEME_MODES.indexOf(themeMode) === -1) themeMode = 'system';
+applyTheme(themeMode);
+
+// In system mode, follow the OS if it flips while the page is open.
+systemDark.addEventListener('change', () => {
+  if (themeMode === 'system') applyTheme('system');
+});
 
 if (themeToggle) {
-  const saved = localStorage.getItem('theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const theme = saved || (prefersDark ? 'dark' : 'light');
-
-  if (theme === 'light') {
-    document.body.classList.add('light-theme');
-    themeToggle.classList.add('light');
-  }
-  applyThemeChrome(theme === 'light');
-
-  // paint the initial favicon to match the starting theme (no animation)
-  faviconT = theme === 'light' ? 1 : 0;
-  drawFavicon(faviconT);
-
   themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('light-theme');
-    themeToggle.classList.toggle('light');
-    const isLight = document.body.classList.contains('light-theme');
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-    applyThemeChrome(isLight);
-    animateFavicon(isLight ? 1 : 0); // smooth morph between palettes
+    themeMode = THEME_MODES[(THEME_MODES.indexOf(themeMode) + 1) % THEME_MODES.length];
+    try { localStorage.setItem(THEME_KEY, themeMode); } catch (e) { /* storage blocked */ }
+    applyTheme(themeMode);
   });
 }
 
-
-/* ---------- CURSOR-FOLLOWING GLOW DOT ---------- */
+/* ---------- CURSOR-TRAILING DOT ----------
+   Spring physics: hard acceleration toward the pointer, slightly
+   underdamped, so quick direction changes overshoot and snap back.
+   The dot stays hidden until the pointer has actually moved. */
 const cursorDot = document.querySelector('.cursor-dot');
-if (cursorDot && window.matchMedia('(hover: hover)').matches) {
-  let tx = window.innerWidth / 2, ty = window.innerHeight / 2;
-  let cx = tx, cy = ty;
+if (cursorDot && !REDUCED && !window.matchMedia('(pointer: coarse)').matches) {
+  const lag = parseFloat(
+    getComputedStyle(document.documentElement).getPropertyValue('--cursor-dot-lag')
+  ) || 0.18;
+  const stiffness = 320 * lag / 0.18;
+  const damping = 2 * Math.sqrt(stiffness) * 0.62;   // under critical -> overshoot on turns
 
-  window.addEventListener('mousemove', e => {
+  let tx = -100, ty = -100, x = -100, y = -100, vx = 0, vy = 0, seen = false, lastT = 0;
+
+  document.addEventListener('mousemove', e => {
     tx = e.clientX; ty = e.clientY;
-    cursorDot.style.opacity = '';
+    if (!seen) { seen = true; x = tx; y = ty; cursorDot.style.opacity = '1'; }
   }, { passive: true });
 
-  document.addEventListener('mouseleave', () => { cursorDot.style.opacity = '0'; });
-
-  const interactive = 'a, button, .project-card, .exp-card, .theme-switch, .social-pill, .tag, .contact-chip';
-  document.addEventListener('mouseover', e => {
-    if (e.target.closest(interactive)) cursorDot.classList.add('hovering');
-  });
-  document.addEventListener('mouseout', e => {
-    if (e.target.closest(interactive)) cursorDot.classList.remove('hovering');
+  document.documentElement.addEventListener('mouseleave', () => {
+    seen = false;
+    cursorDot.style.opacity = '0';
   });
 
-  (function loopDot() {
-    cx += (tx - cx) * 0.16;
-    cy += (ty - cy) * 0.16;
-    cursorDot.style.transform = `translate3d(${cx}px, ${cy}px, 0) translate(-50%, -50%)`;
+  (function loopDot(t) {
     requestAnimationFrame(loopDot);
-  })();
+    const dt = Math.min((t - (lastT || t)) / 1000, 0.05);
+    lastT = t;
+    vx += (stiffness * (tx - x) - damping * vx) * dt;
+    vy += (stiffness * (ty - y) - damping * vy) * dt;
+    x += vx * dt; y += vy * dt;
+    const half = cursorDot.offsetWidth / 2;
+    cursorDot.style.transform = `translate(${(x - half).toFixed(2)}px, ${(y - half).toFixed(2)}px)`;
+  })(0);
 }
 
 
-/* ---------- ACTIVE NAV HIGHLIGHT ---------- */
+/* ---------- MOBILE NAVIGATION ---------- */
+(function mobileNavigation() {
+  const header = document.getElementById('site-header');
+  const toggle = document.getElementById('menu-toggle');
+  const nav = document.getElementById('primary-nav');
+  if (!header || !toggle || !nav) return;
+
+  const mobile = window.matchMedia('(max-width: 768px)');
+
+  function setOpen(open, restoreFocus = false) {
+    const expanded = open && mobile.matches;
+    header.classList.toggle('menu-open', expanded);
+    toggle.setAttribute('aria-expanded', String(expanded));
+    toggle.setAttribute('aria-label', expanded ? 'Close navigation menu' : 'Open navigation menu');
+    if (restoreFocus) toggle.focus({ preventScroll: true });
+  }
+
+  toggle.addEventListener('click', event => {
+    const open = toggle.getAttribute('aria-expanded') !== 'true';
+    setOpen(open);
+    if (open && event.detail === 0) nav.querySelector('a').focus({ preventScroll: true });
+  });
+
+  header.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', event => setOpen(false, mobile.matches && event.detail === 0));
+  });
+  document.addEventListener('click', event => {
+    if (!header.contains(event.target)) setOpen(false);
+  });
+  document.addEventListener('focusin', event => {
+    if (!header.contains(event.target)) setOpen(false);
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+      setOpen(false, true);
+    }
+  });
+  mobile.addEventListener('change', () => setOpen(false));
+})();
+
+
+/* ---------- ACTIVE NAV + MAGNETIC PILL ----------
+   One lozenge glides between nav items instead of each link carrying its
+   own underline. It stretches slightly in the direction of travel, so a
+   long jump reads as momentum rather than a teleport. */
 const sections  = document.querySelectorAll('section[id]');
 const navLinks  = document.querySelectorAll('nav a');
+const navEl     = document.querySelector('nav');
+const navPill   = document.getElementById('nav-pill');
+
+function activeLink() {
+  return document.querySelector('nav a.active') || navLinks[0];
+}
+
+function movePill(link) {
+  if (!navPill || !navEl || !link) return;
+  const nav = navEl.getBoundingClientRect();
+  const box = link.getBoundingClientRect();
+  if (!box.width) return;
+
+  const x    = box.left - nav.left;
+  const prev = parseFloat(navPill.style.getPropertyValue('--pill-x')) || 0;
+  const trip = Math.abs(x - prev);
+
+  navPill.style.width = box.width + 'px';
+  navPill.style.top   = (box.top - nav.top + box.height / 2) + 'px';
+  navPill.style.setProperty('--pill-x', x + 'px');
+
+  // Stretch along the direction of travel, then settle back.
+  if (!REDUCED && trip > 8) {
+    navPill.style.setProperty('--pill-squash', Math.min(1 + trip / 900, 1.14));
+    clearTimeout(navPill._settle);
+    navPill._settle = setTimeout(() => navPill.style.setProperty('--pill-squash', 1), 200);
+  }
+  navPill.classList.add('ready');
+}
 
 function updateNav() {
   const scrollY = window.scrollY + 180;
@@ -210,10 +357,21 @@ function updateNav() {
       });
     }
   });
+  if (!navEl || !navEl.matches(':hover')) movePill(activeLink());
 }
 
+// Follow the cursor across the nav, then snap back to the current section.
+navLinks.forEach(link => link.addEventListener('mouseenter', () => movePill(link)));
+if (navEl) navEl.addEventListener('mouseleave', () => movePill(activeLink()));
+
 window.addEventListener('scroll', updateNav, { passive: true });
+window.addEventListener('resize', () => movePill(activeLink()));
 document.addEventListener('DOMContentLoaded', updateNav);
+// Nav widths shift once the webfont swaps in - re-measure when it lands.
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(() => movePill(activeLink()));
+}
+updateNav();
 
 
 /* ---------- SMOOTH SCROLL ---------- */
@@ -224,335 +382,205 @@ navLinks.forEach(link => {
     e.preventDefault();
     const target = document.querySelector(href);
     if (target) target.scrollIntoView({ behavior: 'smooth' });
+    movePill(link);
   });
 });
 
 
-/* ---------- SCROLL REVEAL ---------- */
-const revealEls = document.querySelectorAll('.reveal');
+/* ---------- SECTION TITLES: SPLIT INTO RISING WORDS ---------- */
+document.querySelectorAll('.section-title').forEach(title => {
+  if (title.dataset.split) return;
+  title.dataset.split = '1';
 
+  const frag = document.createDocumentFragment();
+  let index = 0;
+
+  const addWords = (text, accent) => {
+    text.split(/\s+/).filter(Boolean).forEach(word => {
+      const outer = document.createElement('span');
+      outer.className = accent ? 'w w-accent' : 'w';
+      outer.style.setProperty('--i', index++);
+      const inner = document.createElement('span');
+      inner.className = 'w-in';
+      inner.textContent = word;
+      outer.appendChild(inner);
+      frag.appendChild(outer);
+      frag.appendChild(document.createTextNode(' '));
+    });
+  };
+
+  Array.from(title.childNodes).forEach(node => {
+    if (node.nodeType === Node.TEXT_NODE) addWords(node.textContent, false);
+    else addWords(node.textContent, true);   // the <span> accent fragment
+  });
+
+  title.textContent = '';
+  title.appendChild(frag);
+});
+
+
+/* ---------- SCROLL REVEAL ---------- */
 const revealObs = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
-    const delay = parseInt(entry.target.dataset.delay || 0);
+    const delay = parseInt(entry.target.dataset.delay || 0, 10);
     setTimeout(() => entry.target.classList.add('visible'), delay);
     revealObs.unobserve(entry.target);
   });
-}, { threshold: 0.08 });
+}, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
 
-revealEls.forEach(el => revealObs.observe(el));
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
 
-/* ---------- COUNTER ANIMATION ---------- */
-function formatCountValue(value, prefix = '', suffix = '') {
-  return `${prefix}${Math.round(value).toLocaleString()}${suffix}`;
-}
-
-function animateCount(el, target, ms = 1400, options = {}) {
-  if (!el) return;
-  const prefix = options.prefix || '';
-  const suffix = options.suffix || '';
-  if (el._countFrame) cancelAnimationFrame(el._countFrame);
-  if (target === 0) {
-    el.textContent = formatCountValue(0, prefix, suffix);
-    return;
-  }
-  const start = performance.now();
-  const update = now => {
-    const p = Math.min((now - start) / ms, 1);
-    const ease = 1 - Math.pow(1 - p, 3);
-    el.textContent = formatCountValue(ease * target, prefix, suffix);
-    if (p < 1) {
-      el._countFrame = requestAnimationFrame(update);
-    } else {
-      el._countFrame = null;
-    }
-  };
-  el._countFrame = requestAnimationFrame(update);
-}
-
-function resetCount(el) {
-  if (!el) return;
-  if (el._countFrame) cancelAnimationFrame(el._countFrame);
-  el._countFrame = null;
-  el.textContent = formatCountValue(0, el.dataset.prefix || '', el.dataset.suffix || '');
-}
-
-function playTypingStats() {
-  document.querySelectorAll('#typing .count-up').forEach(el => {
-    animateCount(el, Number(el.dataset.target || 0), 1300, {
-      prefix: el.dataset.prefix || '',
-      suffix: el.dataset.suffix || '',
-    });
+/* ---------- STAGGERED CHIP CASCADES ---------- */
+const staggerObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('shown');
+    staggerObs.unobserve(entry.target);
   });
-}
+}, { threshold: 0.2 });
 
-function resetTypingStats() {
-  document.querySelectorAll('#typing .count-up').forEach(resetCount);
-}
+document.querySelectorAll('[data-stagger]').forEach(group => {
+  Array.from(group.children).forEach((child, i) => child.style.setProperty('--i', i));
+  staggerObs.observe(group);
+});
 
 
-/* ---------- CHESS CANVAS DONUT ---------- */
-let chessAnimationFrame = null;
-let chessBarsTimeout = null;
-let chessInView = false;
-let latestChessStats = null;
-
-function renderChessDonut(win, draw, loss, progress = 1) {
-  const canvas = document.getElementById('chessDonut');
-  if (!canvas) return;
-
-  const dpr  = window.devicePixelRatio || 1;
-  const size = 180;
-  canvas.width  = size * dpr;
-  canvas.height = size * dpr;
-  canvas.style.width  = size + 'px';
-  canvas.style.height = size + 'px';
-
-  const ctx = canvas.getContext('2d');
-  ctx.scale(dpr, dpr);
-
-  const cx    = size / 2;
-  const cy    = size / 2;
-  const R     = 72;
-  const lw    = 15;
-  const total = win + draw + loss;
-
-  const segments = total > 0
-    ? [
-        { val: win,  color: '#00b8a9' },
-        { val: draw, color: '#ffc01e' },
-        { val: loss, color: '#ef4743' },
-      ]
-    : [];
-
-  ctx.clearRect(0, 0, size, size);
-
-  // Background track
-  ctx.beginPath();
-  ctx.arc(cx, cy, R, 0, 2 * Math.PI);
-  ctx.strokeStyle = 'rgba(255,255,255,0.06)';
-  ctx.lineWidth   = lw;
-  ctx.stroke();
-
-  if (total === 0) return;
-
-  const gap     = 0.04;
-  const filled  = segments.filter(s => s.val > 0);
-  const totalAngle = 2 * Math.PI - filled.length * gap;
-  let start     = -0.01;
-
-  filled.forEach(seg => {
-    const fullAngle = (seg.val / total) * totalAngle;
-    const drawAngle = fullAngle * progress;
-
-    ctx.beginPath();
-    ctx.arc(cx, cy, R, start, start + drawAngle);
-    ctx.strokeStyle = seg.color;
-    ctx.lineWidth   = lw;
-    ctx.lineCap     = 'round';
-    ctx.stroke();
-    start += fullAngle + gap;
+/* ---------- TIMELINE SPINE DRAW-IN ---------- */
+const timelineObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('drawn');
+    timelineObs.unobserve(entry.target);
   });
-}
+}, { threshold: 0.05 });
 
-function playChessAnimation(stats = latestChessStats) {
-  if (!stats) return;
-  if (chessAnimationFrame) cancelAnimationFrame(chessAnimationFrame);
+document.querySelectorAll('.timeline').forEach(el => timelineObs.observe(el));
 
-  latestChessStats = stats;
-  resetChessStats(false);
 
-  const total = stats.total || (stats.win + stats.draw + stats.loss);
-  const totalEl = document.getElementById('chess-total');
-  if (totalEl) animateCount(totalEl, total, 1500);
+/* ---------- SCROLL: HERO PARALLAX + NAV ELEVATION ---------- */
+const heroInner = document.getElementById('hero-inner');
+const headerEl  = document.getElementById('site-header');
 
-  setText('chess-rapid',   stats.rapid   > 0 ? stats.rapid.toLocaleString()   : 'N/A');
-  setText('chess-blitz',   stats.blitz   > 0 ? stats.blitz.toLocaleString()   : 'N/A');
-  setText('chess-tactics', stats.tactics > 0 ? stats.tactics.toLocaleString() : 'N/A');
+let scrollTicking = false;
+function onScrollFrame() {
+  scrollTicking = false;
+  const y = window.scrollY;
 
-  setText('chess-win',  stats.win.toLocaleString());
-  setText('chess-draw', stats.draw.toLocaleString());
-  setText('chess-loss', stats.loss.toLocaleString());
-
-  if (chessBarsTimeout) clearTimeout(chessBarsTimeout);
-  chessBarsTimeout = setTimeout(() => {
-    setWidth('chess-win-bar',  pct(stats.win,  total));
-    setWidth('chess-draw-bar', pct(stats.draw, total));
-    setWidth('chess-loss-bar', pct(stats.loss, total));
-    chessBarsTimeout = null;
-  }, 180);
-
-  const duration = 1500;
-  const started = performance.now();
-
-  function frame(now) {
-    const p = Math.min((now - started) / duration, 1);
-    const ease = 1 - Math.pow(1 - p, 2);
-    renderChessDonut(stats.win, stats.draw, stats.loss, ease);
-    if (p < 1) {
-      chessAnimationFrame = requestAnimationFrame(frame);
-    } else {
-      chessAnimationFrame = null;
-    }
+  if (heroInner && !REDUCED) {
+    const vh = window.innerHeight || 1;
+    const p = Math.min(y / vh, 1);
+    heroInner.style.setProperty('--hero-shift', (p * 90).toFixed(1) + 'px');
+    heroInner.style.setProperty('--hero-fade', Math.max(0, 1 - p * 1.25).toFixed(3));
   }
 
-  chessAnimationFrame = requestAnimationFrame(frame);
+  // The floating pill deepens its shadow once it lifts off the top of the page.
+  if (headerEl) headerEl.classList.toggle('scrolled', y > 20);
 }
 
-function resetChessStats(clearText = true) {
-  if (chessAnimationFrame) cancelAnimationFrame(chessAnimationFrame);
-  if (chessBarsTimeout) clearTimeout(chessBarsTimeout);
-  chessAnimationFrame = null;
-  chessBarsTimeout = null;
-  renderChessDonut(0, 0, 0);
-  setWidth('chess-win-bar', 0);
-  setWidth('chess-draw-bar', 0);
-  setWidth('chess-loss-bar', 0);
-
-  if (!clearText) return;
-  const totalEl = document.getElementById('chess-total');
-  if (totalEl) {
-    if (totalEl._countFrame) cancelAnimationFrame(totalEl._countFrame);
-    totalEl._countFrame = null;
-    totalEl.textContent = '...';
-  }
-  setText('chess-win', '...');
-  setText('chess-draw', '...');
-  setText('chess-loss', '...');
-  setText('chess-rapid', '...');
-  setText('chess-blitz', '...');
-  setText('chess-tactics', '...');
-}
-
-/* ---------- TYPING STATS WHEN VISIBLE ---------- */
-const typingSection = document.getElementById('typing');
-if (typingSection) {
-  resetTypingStats();
-  const typingObs = new IntersectionObserver(entries => {
-    if (entries[0].isIntersecting) {
-      playTypingStats();
-    } else {
-      resetTypingStats();
-    }
-  }, { threshold: 0.28 });
-  typingObs.observe(typingSection);
-}
+window.addEventListener('scroll', () => {
+  if (scrollTicking) return;
+  scrollTicking = true;
+  requestAnimationFrame(onScrollFrame);
+}, { passive: true });
+onScrollFrame();
 
 
-/* ---------- CHESS DATA FETCH (Chess.com public API) ---------- */
-let chessLoaded = false;
-
-async function loadChess() {
-  if (chessLoaded) {
-    if (chessInView) playChessAnimation();
-    return;
-  }
-  chessLoaded = true;
-
-  const username = 'yabtesfu';
-
-  try {
-    const res = await fetch(
-      `https://api.chess.com/pub/player/${username}/stats`,
-      { signal: AbortSignal.timeout(7000) }
-    );
-    if (!res.ok) throw new Error('chess api failed');
-    const d = await res.json();
-    applyChessStats(d);
-  } catch {
-    chessLoaded = false; // allow a retry next time the section scrolls into view
-    showChessFallback();
-  }
-}
-
-function applyChessStats(d) {
-  const classes = ['chess_rapid', 'chess_blitz', 'chess_bullet', 'chess_daily'];
-  let win = 0, draw = 0, loss = 0, peak = 0;
-
-  classes.forEach(key => {
-    const c = d[key];
-    if (!c) return;
-    if (c.record) {
-      win  += c.record.win  || 0;
-      loss += c.record.loss || 0;
-      draw += c.record.draw || 0;
-    }
-    if (c.best && c.best.rating > peak) peak = c.best.rating;
-  });
-
-  const rapid   = (d.chess_rapid && d.chess_rapid.last && d.chess_rapid.last.rating) || 0;
-  const blitz   = (d.chess_blitz && d.chess_blitz.last && d.chess_blitz.last.rating) || 0;
-  const tactics = (d.tactics && d.tactics.highest && d.tactics.highest.rating) || 0;
-
-  latestChessStats = { win, draw, loss, rapid, blitz, tactics, peak, total: win + draw + loss };
-  if (chessInView) playChessAnimation();
-}
-
-function showChessFallback() {
-  // Draw an empty donut and keep the loading-style placeholders.
-  resetChessStats();
-}
-
-// Helpers
-function setText(id, val) {
-  const el = document.getElementById(id);
-  if (el) el.textContent = val;
-}
-
-function setWidth(id, w) {
-  const el = document.getElementById(id);
-  if (el) el.style.width = w + '%';
-}
-
-function pct(n, total) {
-  return total > 0 ? Math.round((n / total) * 100) : 0;
-}
-
-
-/* ---------- TRIGGER CHESS WHEN VISIBLE ---------- */
-const chessSection = document.getElementById('chess');
-if (chessSection) {
-  resetChessStats();
-  const cObs = new IntersectionObserver(entries => {
-    chessInView = entries[0].isIntersecting;
-    if (chessInView) {
-      loadChess();
-    } else {
-      resetChessStats();
-    }
-  }, { threshold: 0.28 });
-  cObs.observe(chessSection);
-}
-
-
-/* ---------- HEADER SCROLL SHADOW ---------- */
-const headerEl = document.getElementById('site-header');
-if (headerEl) {
-  window.addEventListener('scroll', () => {
-    headerEl.style.boxShadow = window.scrollY > 20
-      ? '0 1px 30px rgba(0,0,0,0.3)'
-      : 'none';
-  }, { passive: true });
-}
-
-
-/* ---------- EXPERIENCE CARD CURSOR-TILT ---------- */
+/* ---------- CARD PHYSICS ----------
+   A resting tilted card straightens the moment the pointer enters (CSS
+   handles that), then tracks the cursor in 3D: the edge under the pointer
+   recedes while the opposite edge pops. The boundary glow is CSS too. */
 (function () {
   const canHover = window.matchMedia('(hover: hover)').matches;
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!canHover || reduced) return;
+  if (!canHover || REDUCED) return;
 
-  document.querySelectorAll('.exp-card').forEach(card => {
+  const MAX = parseFloat(
+    getComputedStyle(document.documentElement).getPropertyValue('--card-tilt-max')
+  ) || 5;
+
+  document.querySelectorAll('.project-card, .exp-card, .contact-card').forEach(card => {
+    card.addEventListener('mouseenter', () => card.classList.add('tracking'));
+
     card.addEventListener('mousemove', e => {
       const r = card.getBoundingClientRect();
-      const px = (e.clientX - r.left) / r.width;   // 0 = left edge, 1 = right edge
-      const py = (e.clientY - r.top) / r.height;   // 0 = top,  1 = bottom
-      const rotY = (px - 0.5) * 9;                 // lean toward the cursor side
-      const rotX = (0.5 - py) * 5;
+      const px = (e.clientX - r.left) / r.width  - 0.5;   // -0.5 … 0.5
+      const py = (e.clientY - r.top)  / r.height - 0.5;
+      const rotX = ( py * MAX * 2).toFixed(2);
+      const rotY = (-px * MAX * 2).toFixed(2);
       card.style.transform =
-        `perspective(900px) rotateY(${rotY.toFixed(2)}deg) rotateX(${rotX.toFixed(2)}deg) scale(1.025)`;
+        `perspective(var(--card-perspective)) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-2px)`;
     });
-    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+
+    card.addEventListener('mouseleave', () => {
+      card.classList.remove('tracking');
+      card.style.transform = '';   // settles back to its resting tilt
+    });
   });
+})();
+
+
+/* ---------- STARFIELD ----------
+   Grain-size stars scattered over the canvas light up one by one and fade,
+   like a night sky. Whisper-quiet in light, the signature ambience in dark.
+   Colors are read from --star / --star-glow so it follows the theme. */
+(function starfield() {
+  const canvas = document.getElementById('starfield');
+  if (!canvas || REDUCED) return;
+
+  const ctx = canvas.getContext('2d');
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  let stars = [], w = 0, h = 0, last = 0;
+
+  function seed() {
+    const count = Math.round((w * h) / 30000);   // present, not attention-grabbing
+    stars = Array.from({ length: count }, () => ({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      r: 1 + Math.random() * 1.9,
+      t: Math.random() * Math.PI * 2,        // twinkle phase
+      v: 0.25 + Math.random() * 0.65,        // twinkle speed
+      drift: Math.random() * 0.02 - 0.01,
+    }));
+  }
+
+  function resize() {
+    w = window.innerWidth;
+    h = window.innerHeight;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    seed();
+  }
+
+  function frame(now) {
+    requestAnimationFrame(frame);
+    if (now - last < 40) return;             // ~25fps is plenty for twinkle
+    last = now;
+
+    const css = getComputedStyle(document.documentElement);
+    const color = css.getPropertyValue('--star').trim() || '#73afd3';
+    const glow  = css.getPropertyValue('--star-glow').trim() || 'rgba(115,175,211,0.5)';
+
+    ctx.clearRect(0, 0, w, h);
+    for (const s of stars) {
+      s.t += 0.06 * s.v;
+      s.x += s.drift;
+      const a = Math.max(0, Math.sin(s.t));   // dark for half the cycle: appear, then fade
+      if (a < 0.02) continue;
+      ctx.globalAlpha = Math.pow(a, 1.3);     // ease the pop-in, but stay lit longer
+      ctx.shadowBlur = 8 + 10 * a;
+      ctx.shadowColor = glow;
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    ctx.shadowBlur = 0;
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+  requestAnimationFrame(frame);
 })();
