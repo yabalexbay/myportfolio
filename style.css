@@ -1,44 +1,44 @@
 /* ================================================
-   SINODA TESFAY PORTFOLIO - style.css
+   YABETSE TESFAYE ALEMU PORTFOLIO - style.css
    Design system: Folio (engineer's-notebook portfolio)
      - static dotted engineering-grid canvas with a twinkling starfield
-     - light: forest-green ink (#163300) on near-white
-       dark:  black ground, two primaries (white ink + bright green #9fe870)
-              and one secondary (dim green-gray) that tags speak in
+     - light: charcoal ink with sky-blue accents on cool white
+       dark:  midnight ground with white ink and ice-blue accents
+              and a secondary slate tone for tags and metadata
      - heavy all-caps display type (Anton) for hero + section titles
      - JetBrains Mono as the second voice: roles, tags, metadata
      - cards tilt at rest, straighten under the cursor, track it in 3D,
-       and light their boundary with a thin green glow line - never a bloom
+       and light their boundary with a thin blue glow line - never a bloom
    ================================================ */
 
 /* =============================================
    TOKENS
    ============================================= */
 :root {
-  /* ---- Brand ramp (yellow-green, hue ~100) ---- */
-  --brand-50:  #f2fae9;
-  --brand-100: #e6f6d4;
-  --brand-200: #cfeeae;
-  --brand-300: #9fe870;   /* bright green (dark-theme accent) */
-  --brand-400: #7fd04f;
-  --brand-500: #5da635;
-  --brand-600: #468226;
-  --brand-700: #33641b;
-  --brand-800: #234a10;
-  --brand-900: #163300;   /* forest headline green */
+  /* ---- Brand ramp: sky blue ---- */
+  --brand-50:  #f0f8ff;
+  --brand-100: #e1f2fe;
+  --brand-200: #bfe7fc;
+  --brand-300: #8bd2f5;   /* ice-blue dark-theme accent */
+  --brand-400: #5bb9e8;
+  --brand-500: #349bce;
+  --brand-600: #1279ab;
+  --brand-700: #12638d;
+  --brand-800: #144f70;
+  --brand-900: #123f59;
 
-  /* ---- Green-gray neutrals ---- */
-  --neutral-50:  #f7f9f4;
-  --neutral-100: #eef2e9;
-  --neutral-200: #e0e6da;
-  --neutral-300: #c5cdbe;
-  --neutral-400: #9fac95;
-  --neutral-500: #6d7d64;
-  --neutral-600: #57684e;
-  --neutral-700: #48593f;
-  --neutral-800: #2f3d28;
-  --neutral-900: #1d2916;
-  --neutral-950: #121b0d;
+  /* ---- Cool slate neutrals ---- */
+  --neutral-50:  #f8fbff;
+  --neutral-100: #eef3f8;
+  --neutral-200: #dfe7ef;
+  --neutral-300: #c2cdd9;
+  --neutral-400: #98a8ba;
+  --neutral-500: #607183;
+  --neutral-600: #4f6072;
+  --neutral-700: #3c4a59;
+  --neutral-800: #263442;
+  --neutral-900: #111820;
+  --neutral-950: #080c12;
 
   /* ---- Type ---- */
   --font-display: "Anton", "Arial Narrow", ui-sans-serif, system-ui, sans-serif;
@@ -86,69 +86,74 @@
   --ui-scale: 1;
 }
 
-/* ---- Light: white ground, green ink ---- */
+/* ---- Light: cool white, charcoal ink, sky-blue accents ---- */
 :root {
-  --bg-page:      #fafbf8;
-  --surface-card: #fbfdf9;   /* cards keep the page tone - elevation is shadow, not fill */
-  --surface-nav:  rgba(242, 250, 233, 0.85);
-  --tint-chip:        #eef8e4;
-  --tint-chip-hover:  #e0f2d2;
-  --tint-chip-active: #d1eabc;
-  --border-soft: #e5eadf;
-  --border-chip: #dde9d6;
-  --border-tag:  #e6efe0;    /* quieter than chips by design */
-  --text-heading: var(--brand-900);
-  --accent:       var(--brand-500);
+  --bg-page:      #f8fbff;
+  --surface-card: #fcfdff;   /* cards keep the page tone - elevation is shadow, not fill */
+  --surface-nav:  rgba(237, 246, 253, 0.88);
+  --tint-chip:        #eef6fc;
+  --tint-chip-hover:  #e0effa;
+  --tint-chip-active: #d1e7f6;
+  --border-soft: #e0e8f0;
+  --border-chip: #d7e7f3;
+  --border-tag:  #e0edf7;    /* quieter than chips by design */
+  --text-heading: var(--neutral-900);
+  --accent:       var(--brand-600);
   --text-strong:  var(--neutral-900);
   --text-body:    var(--neutral-700);
   --text-muted:   var(--neutral-500);
   --text-tag:     var(--neutral-500);
   --link:       var(--brand-700);
-  --link-hover: var(--brand-900);
-  --focus:      var(--brand-500);
-  --dot:      #c2c8bd;
-  --scribble: #a9bd9c;
+  --link-hover: var(--brand-800);
+  --focus:      var(--brand-600);
+  --dot:      #c3d0dc;
+  --scribble: #8eb6d1;
   /* Stars stay a whisper on the light ground - they are the dark theme's
      signature, not this one's. */
-  --star:      #7ab994;
-  --star-glow: rgba(122, 185, 148, 0.45);
-  --glow-line: rgba(93, 166, 53, 0.65);
-  --glow-ring: 0 0 0 1px var(--glow-line), 0 0 10px rgba(93, 166, 53, 0.28), 0 0 22px rgba(93, 166, 53, 0.12);
+  --star:      #73afd3;
+  --star-glow: rgba(115, 175, 211, 0.45);
+  --glow-line: rgba(52, 155, 206, 0.6);
+  --glow-ring: 0 0 0 1px var(--glow-line), 0 0 10px rgba(52, 155, 206, 0.22), 0 0 22px rgba(52, 155, 206, 0.1);
+  --loader-accent: var(--brand-600);
+  --loader-halo: rgba(91, 185, 232, 0.12);
+  --loader-gradient: linear-gradient(90deg, #5bb9e8, #7b9ce8);
 
-  --shadow-chip:    0 1px 2px rgba(18, 41, 8, 0.06);
-  --shadow-card:    0 1px 2px rgba(18, 41, 8, 0.05), 0 8px 20px rgba(18, 41, 8, 0.08);
-  --shadow-card-lg: 0 2px 4px rgba(18, 41, 8, 0.05), 0 16px 36px rgba(18, 41, 8, 0.12);
-  --shadow-nav:     0 8px 24px rgba(18, 41, 8, 0.07);
+  --shadow-chip:    0 1px 2px rgba(14, 35, 55, 0.06);
+  --shadow-card:    0 1px 2px rgba(14, 35, 55, 0.05), 0 8px 20px rgba(14, 35, 55, 0.08);
+  --shadow-card-lg: 0 2px 4px rgba(14, 35, 55, 0.05), 0 16px 36px rgba(14, 35, 55, 0.12);
+  --shadow-nav:     0 8px 24px rgba(14, 35, 55, 0.07);
 }
 
-/* ---- Dark: black ground, white ink + bright green, dim tags ---- */
+/* ---- Dark: midnight ground, white ink, ice-blue accents ---- */
 :root[data-theme="dark"] {
-  --bg-page:      #070907;
-  --surface-card: #0c100c;
-  --surface-nav:  rgba(14, 18, 14, 0.82);
-  --tint-chip:        #121a12;
-  --tint-chip-hover:  #182317;
-  --tint-chip-active: #1f2f1d;
-  --border-soft: #1c241c;
-  --border-chip: #223022;
-  --border-tag:  #182018;
-  --text-heading: #f2f6ee;   /* primary 1: white ink */
-  --accent:       #9fe870;   /* primary 2: bright green */
-  --text-strong:  #edf3e8;
-  --text-body:    #c0cdb9;
-  --text-muted:   #79876f;
-  --text-tag:     #6c7a63;   /* secondary: quieter than body */
-  --link:       #9fe870;
-  --link-hover: #c0f39a;
-  --focus:      #9fe870;
-  --dot:      rgba(228, 234, 224, 0.34);
-  --scribble: #4c6a38;
-  /* Stars lean emerald rather than lime - it sits on black instead of
-     vibrating against it, and still reads unmistakably green. */
-  --star:      #3ddc97;
-  --star-glow: rgba(61, 220, 151, 0.8);
-  --glow-line: rgba(159, 232, 112, 0.75);
-  --glow-ring: 0 0 0 1px var(--glow-line), 0 0 12px rgba(159, 232, 112, 0.3), 0 0 26px rgba(159, 232, 112, 0.14);
+  --bg-page:      #080c12;
+  --surface-card: #0d141e;
+  --surface-nav:  rgba(14, 22, 32, 0.86);
+  --tint-chip:        #101f2d;
+  --tint-chip-hover:  #172c3e;
+  --tint-chip-active: #1d3850;
+  --border-soft: #1b2938;
+  --border-chip: #243c50;
+  --border-tag:  #1c3042;
+  --text-heading: #f3f7fb;
+  --accent:       var(--brand-300);
+  --text-strong:  #edf4fb;
+  --text-body:    #c1ccd8;
+  --text-muted:   #8798ab;
+  --text-tag:     #91a6ba;   /* secondary: quieter than body */
+  --link:       var(--brand-300);
+  --link-hover: #bfe7fc;
+  --focus:      var(--brand-300);
+  --dot:      rgba(211, 228, 240, 0.3);
+  --scribble: #48799c;
+  /* Cool blue stars echo the accents without overpowering the dark canvas. */
+  --star:      #83cefa;
+  --star-glow: rgba(131, 206, 250, 0.75);
+  --glow-line: rgba(139, 210, 245, 0.7);
+  --glow-ring: 0 0 0 1px var(--glow-line), 0 0 12px rgba(139, 210, 245, 0.26), 0 0 26px rgba(139, 210, 245, 0.12);
+  --loader-accent: var(--brand-300);
+  --loader-halo: rgba(139, 210, 245, 0.09);
+  --loader-gradient: linear-gradient(90deg, #8bd2f5, #a9baff);
 
   --shadow-chip:    0 1px 2px rgba(0, 0, 0, 0.5);
   --shadow-card:    0 1px 2px rgba(0, 0, 0, 0.5), 0 8px 20px rgba(0, 0, 0, 0.45);
@@ -241,8 +246,9 @@ button:focus-visible,
   align-items: center;
   justify-content: center;
   background-color: var(--bg-page);
-  background-image: radial-gradient(circle, var(--dot) var(--dot-size), transparent calc(var(--dot-size) + 0.5px));
-  background-size: var(--dot-gap) var(--dot-gap);
+  background-image: radial-gradient(ellipse at 50% 42%, var(--loader-halo), transparent 48%),
+                    radial-gradient(circle, var(--dot) var(--dot-size), transparent calc(var(--dot-size) + 0.5px));
+  background-size: 100% 100%, var(--dot-gap) var(--dot-gap);
   opacity: 0;
   visibility: hidden;
   transform: scale(1.03);
@@ -298,7 +304,7 @@ body.preloading { overflow: hidden; }
 }
 .pre-ring-track { stroke: var(--border-soft); }
 .pre-ring-arc {
-  stroke: var(--accent);
+  stroke: var(--loader-accent);
   stroke-dasharray: 364.4;      /* 2 * PI * 58 */
   stroke-dashoffset: 364.4;
 }
@@ -307,7 +313,7 @@ body.preloading { overflow: hidden; }
   border-radius: 1.6rem;
   display: grid;
   place-items: center;
-  background: var(--tint-chip);
+  background: linear-gradient(145deg, var(--tint-chip-hover), var(--surface-card));
   border: 1px solid var(--border-chip);
   box-shadow: var(--shadow-card);
 }
@@ -363,7 +369,7 @@ body.preloading { overflow: hidden; }
 .pre-led {
   width: 5px; height: 5px;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--loader-accent);
   box-shadow: 0 0 6px var(--star-glow);
   flex-shrink: 0;
   animation: blipPulse 1.6s ease-in-out infinite;
@@ -396,7 +402,7 @@ body.preloading { overflow: hidden; }
   height: 100%;
   width: 0%;
   border-radius: var(--radius-pill);
-  background: var(--accent);
+  background: var(--loader-gradient);
 }
 .pre-readout {
   display: flex;
@@ -495,10 +501,10 @@ body.preloading { overflow: hidden; }
   opacity: 0.7;
   pointer-events: none;
   background: no-repeat center/contain
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='24' fill='none'%3E%3Cpath d='M2 18 C 14 4, 30 20, 46 8 S 60 10, 62 6' stroke='%23a9bd9c' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='24' fill='none'%3E%3Cpath d='M2 18 C 14 4, 30 20, 46 8 S 60 10, 62 6' stroke='%238eb6d1' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 :root[data-theme="dark"] .hero::after {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='24' fill='none'%3E%3Cpath d='M2 18 C 14 4, 30 20, 46 8 S 60 10, 62 6' stroke='%234c6a38' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='24' fill='none'%3E%3Cpath d='M2 18 C 14 4, 30 20, 46 8 S 60 10, 62 6' stroke='%2348799c' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
 /* ---------- CURSOR-TRAILING DOT ---------- */
@@ -635,7 +641,7 @@ nav a.active { color: var(--text-strong); font-weight: 600; }
   height: 2.8rem;
   width: 0;
   border-radius: var(--radius-pill);
-  background: rgba(93, 166, 53, 0.14);
+  background: rgba(52, 155, 206, 0.14);
   background: color-mix(in srgb, var(--accent) 14%, transparent);
   pointer-events: none;
   opacity: 0;
@@ -696,7 +702,7 @@ nav a.active { color: var(--text-strong); font-weight: 600; }
 
 /* --- name: heavy display caps ---
    No `text-wrap: balance` here on purpose: it re-runs line breaking while
-   the middle name expands, which is what made the reveal judder. */
+   the last name expands, which is what made the reveal judder. */
 .hero-title {
   font-family: var(--font-display);
   font-size: clamp(2.6rem, 3.3vw, 4rem);
@@ -707,37 +713,37 @@ nav a.active { color: var(--text-strong); font-weight: 600; }
   color: var(--text-heading);
   margin-bottom: 1.6rem;
   animation: slideUp var(--reveal-duration) var(--ease-out) 0.15s both;
-  cursor: default;
+  cursor: pointer;
 }
 /* One unbroken line, so the reveal never re-wraps and jumps. */
 @media (min-width: 769px) {
   .hero-title { white-space: nowrap; }
 }
 .nm-first { margin-right: 0.28em; }
-.nm-last  { color: var(--accent); }
+.nm-middle { color: var(--accent); }
 
-/* The middle name unfolds on hover. --mid-w is measured in script.js so the
+/* The last name unfolds on hover. --last-w is measured in script.js so the
    width animation lands exactly on the word instead of overshooting it -
    overshoot is what made the motion stall and shake near the end. */
-.nm-mid {
+.nm-last {
   display: inline-block;
   vertical-align: bottom;
   max-width: 0;
-  margin-right: 0;
+  margin-left: 0;
   overflow: hidden;
   white-space: nowrap;
   opacity: 0;
   color: var(--text-muted);
   transition: max-width 1.05s var(--ease-soft),
-              margin-right 1.05s var(--ease-soft),
+              margin-left 1.05s var(--ease-soft),
               opacity 0.7s ease 0.14s,
               color 0.4s var(--ease);
 }
-.hero-title:hover .nm-mid,
-.hero-title:focus-visible .nm-mid,
-.hero-title.show-mid .nm-mid {
-  max-width: var(--mid-w, 11ch);
-  margin-right: 0.28em;
+.hero-title:hover .nm-last,
+.hero-title:focus-visible .nm-last,
+.hero-title.show-last .nm-last {
+  max-width: var(--last-w, 6ch);
+  margin-left: 0.28em;
   opacity: 1;
   color: var(--text-heading);
 }
@@ -1120,6 +1126,14 @@ nav a.active { color: var(--text-strong); font-weight: 600; }
   margin-bottom: 0.3rem;
 }
 .exp-org i { color: var(--accent); font-size: 0.95rem; }
+.exp-org a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--border-chip);
+  text-underline-offset: 3px;
+  transition: color var(--speed) var(--ease);
+}
+.exp-org a:hover { color: var(--link); text-decoration-color: currentColor; }
 .exp-loc { color: var(--text-muted); font-weight: 400; }
 .exp-meta {
   font-family: var(--font-mono);
@@ -1161,7 +1175,7 @@ nav a.active { color: var(--text-strong); font-weight: 600; }
   color: var(--text-body);
   max-width: 36rem;
 }
-.contact-icons { display: flex; align-items: center; gap: 1rem; }
+.contact-icons { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem; }
 .contact-icons a {
   width: 3rem; height: 3rem;
   display: inline-flex; align-items: center; justify-content: center;
@@ -1413,8 +1427,8 @@ body.preloading .hero-inner * { animation-play-state: paused !important; }
   .hero-actions { flex-direction: column; align-items: stretch; width: 100%; }
   .btn-primary, .btn-secondary { width: 100%; }
 
-  /* On phones the middle name unfolds onto its own line instead of squeezing */
-  .nm-mid { white-space: normal; }
+  /* On phones the last name can wrap as it unfolds. */
+  .nm-last { white-space: normal; }
 
   .hero::after { display: none; }
 }

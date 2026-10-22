@@ -1,5 +1,5 @@
 /* ================================================
-   SINODA TESFAY PORTFOLIO - script.js
+   YABETSE TESFAYE ALEMU PORTFOLIO - script.js
    ================================================ */
 
 const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -169,27 +169,27 @@ window.addEventListener('scroll', () => {
 
 
 /* ---------- FULL NAME REVEAL ----------
-   The middle name unfolds by animating max-width. Guessing that width in `ch`
+   The last name unfolds by animating max-width. Guessing that width in `ch`
    overshot the real word, so the easing spent its last stretch travelling past
    text that had already finished moving - which is what read as a stutter.
    Measuring the word and handing the exact px to CSS makes the curve land
    right on it. Re-measured once the display webfont swaps in, and on resize. */
 const heroName = document.getElementById('hero-name');
 if (heroName) {
-  const midEl = heroName.querySelector('.nm-mid');
+  const lastEl = heroName.querySelector('.nm-last');
 
-  function measureMiddleName() {
-    if (!midEl) return;
-    const w = midEl.scrollWidth;           // full content width despite max-width: 0
-    if (w > 0) heroName.style.setProperty('--mid-w', w + 'px');
+  function measureLastName() {
+    if (!lastEl) return;
+    const w = lastEl.scrollWidth;           // full content width despite max-width: 0
+    if (w > 0) heroName.style.setProperty('--last-w', w + 'px');
   }
 
-  measureMiddleName();
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(measureMiddleName);
-  window.addEventListener('resize', measureMiddleName);
+  measureLastName();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(measureLastName);
+  window.addEventListener('resize', measureLastName);
 
   // Tap support on touch devices, where there is no hover.
-  heroName.addEventListener('click', () => heroName.classList.toggle('show-mid'));
+  heroName.addEventListener('click', () => heroName.classList.toggle('show-last'));
 }
 
 
@@ -212,7 +212,7 @@ function applyTheme(mode) {
     themeToggle.setAttribute('title', 'Theme: ' + mode);
   }
   if (themeColorMeta) {
-    themeColorMeta.setAttribute('content', resolved === 'dark' ? '#070907' : '#fafbf8');
+    themeColorMeta.setAttribute('content', resolved === 'dark' ? '#080c12' : '#f8fbff');
   }
 }
 
@@ -518,8 +518,8 @@ onScrollFrame();
     last = now;
 
     const css = getComputedStyle(document.documentElement);
-    const color = css.getPropertyValue('--star').trim() || '#5da635';
-    const glow  = css.getPropertyValue('--star-glow').trim() || 'rgba(93,166,53,0.5)';
+    const color = css.getPropertyValue('--star').trim() || '#73afd3';
+    const glow  = css.getPropertyValue('--star-glow').trim() || 'rgba(115,175,211,0.5)';
 
     ctx.clearRect(0, 0, w, h);
     for (const s of stars) {
