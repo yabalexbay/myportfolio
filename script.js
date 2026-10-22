@@ -270,6 +270,47 @@ if (cursorDot && !REDUCED && !window.matchMedia('(pointer: coarse)').matches) {
 }
 
 
+/* ---------- MOBILE NAVIGATION ---------- */
+(function mobileNavigation() {
+  const header = document.getElementById('site-header');
+  const toggle = document.getElementById('menu-toggle');
+  const nav = document.getElementById('primary-nav');
+  if (!header || !toggle || !nav) return;
+
+  const mobile = window.matchMedia('(max-width: 768px)');
+
+  function setOpen(open, restoreFocus = false) {
+    const expanded = open && mobile.matches;
+    header.classList.toggle('menu-open', expanded);
+    toggle.setAttribute('aria-expanded', String(expanded));
+    toggle.setAttribute('aria-label', expanded ? 'Close navigation menu' : 'Open navigation menu');
+    if (restoreFocus) toggle.focus({ preventScroll: true });
+  }
+
+  toggle.addEventListener('click', event => {
+    const open = toggle.getAttribute('aria-expanded') !== 'true';
+    setOpen(open);
+    if (open && event.detail === 0) nav.querySelector('a').focus({ preventScroll: true });
+  });
+
+  header.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', event => setOpen(false, mobile.matches && event.detail === 0));
+  });
+  document.addEventListener('click', event => {
+    if (!header.contains(event.target)) setOpen(false);
+  });
+  document.addEventListener('focusin', event => {
+    if (!header.contains(event.target)) setOpen(false);
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+      setOpen(false, true);
+    }
+  });
+  mobile.addEventListener('change', () => setOpen(false));
+})();
+
+
 /* ---------- ACTIVE NAV + MAGNETIC PILL ----------
    One lozenge glides between nav items instead of each link carrying its
    own underline. It stretches slightly in the direction of travel, so a

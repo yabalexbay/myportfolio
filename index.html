@@ -47,40 +47,45 @@
   <!-- ===================== LOADING SCREEN ===================== -->
   <div class="preloader" id="preloader" role="status" aria-live="polite" aria-label="Loading portfolio">
 
-    <div class="pre-field" aria-hidden="true">
-      <span class="pre-tag" style="--tx:-34rem; --ty:-12rem; --d:.10s">Python</span>
-      <span class="pre-tag" style="--tx:-26rem; --ty:  3rem; --d:.22s">Rust</span>
-      <span class="pre-tag" style="--tx:-15rem; --ty:-19rem; --d:.34s">FastAPI</span>
-      <span class="pre-tag" style="--tx: 15rem; --ty:-19rem; --d:.16s">TensorFlow</span>
-      <span class="pre-tag" style="--tx: 27rem; --ty: -6rem; --d:.28s">Docker</span>
-      <span class="pre-tag" style="--tx: 33rem; --ty:  8rem; --d:.40s">Kubernetes</span>
-      <span class="pre-tag" style="--tx:-31rem; --ty: 14rem; --d:.46s">React</span>
-      <span class="pre-tag" style="--tx: 31rem; --ty: 21rem; --d:.52s">RISC-V</span>
-    </div>
-
-    <div class="pre-core">
-      <div class="pre-mark">
-        <svg class="pre-ring" viewBox="0 0 132 132" aria-hidden="true">
-          <circle class="pre-ring-track" cx="66" cy="66" r="58" />
-          <circle class="pre-ring-arc"   cx="66" cy="66" r="58" id="pre-arc" />
-        </svg>
-        <div class="pre-tile"><span>YT</span></div>
+    <div class="pre-scene">
+      <div class="pre-tags" aria-hidden="true">
+        <span class="pre-tag" style="--d:.10s">Python</span>
+        <span class="pre-tag" style="--d:.16s">Rust</span>
+        <span class="pre-tag" style="--d:.22s">FastAPI</span>
+        <span class="pre-tag" style="--d:.28s">TensorFlow</span>
       </div>
 
-      <h2 class="pre-name">Yabetse Tesfaye</h2>
-      <p class="pre-role">Full-Stack &amp; Systems Engineer</p>
+      <div class="pre-core">
+        <div class="pre-mark">
+          <svg class="pre-ring" viewBox="0 0 132 132" aria-hidden="true">
+            <circle class="pre-ring-track" cx="66" cy="66" r="58" />
+            <circle class="pre-ring-arc"   cx="66" cy="66" r="58" id="pre-arc" />
+          </svg>
+          <div class="pre-tile"><span>YT</span></div>
+        </div>
 
-      <div class="pre-panel">
-        <div class="pre-panel-top">
-          <span class="pre-led"></span>
-          <span class="pre-panel-title">portfolio build</span>
+        <h2 class="pre-name">Yabetse Tesfaye</h2>
+        <p class="pre-role">Full-Stack &amp; Systems Engineer</p>
+
+        <div class="pre-panel">
+          <div class="pre-panel-top">
+            <span class="pre-led"></span>
+            <span class="pre-panel-title">portfolio build</span>
+          </div>
+          <p class="pre-status" id="pre-status">initializing interface</p>
+          <div class="pre-track"><span class="pre-fill" id="pre-fill"></span></div>
+          <div class="pre-readout">
+            <span id="pre-modules">modules 00 / 12</span>
+            <span id="pre-pct">0%</span>
+          </div>
         </div>
-        <p class="pre-status" id="pre-status">initializing interface</p>
-        <div class="pre-track"><span class="pre-fill" id="pre-fill"></span></div>
-        <div class="pre-readout">
-          <span id="pre-modules">modules 00 / 12</span>
-          <span id="pre-pct">0%</span>
-        </div>
+      </div>
+
+      <div class="pre-tags" aria-hidden="true">
+        <span class="pre-tag" style="--d:.34s">Docker</span>
+        <span class="pre-tag" style="--d:.40s">Kubernetes</span>
+        <span class="pre-tag" style="--d:.46s">React</span>
+        <span class="pre-tag" style="--d:.52s">RISC-V</span>
       </div>
     </div>
   </div>
@@ -101,7 +106,7 @@
     </a>
 
     <div class="nav-shell">
-      <nav>
+      <nav id="primary-nav" aria-label="Primary navigation">
         <span class="nav-pill" id="nav-pill" aria-hidden="true"></span>
         <a href="#home" class="active">Home</a>
         <a href="#projects">Projects</a>
@@ -121,6 +126,9 @@
         <svg class="ico-system" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/>
         </svg>
+      </button>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="primary-nav" aria-expanded="false">
+        <span class="menu-icon" aria-hidden="true"><span></span><span></span></span>
       </button>
     </div>
   </header>
