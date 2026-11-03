@@ -1,0 +1,12 @@
+# Files the live site does not need. Only the built pages and assets are deployed.
+node_modules
+scripts
+tests
+data
+docs
+test-results
+playwright-report
+package.json
+package-lock.json
+playwright.config.mjs
+PORTFOLIO_BRIEF.md

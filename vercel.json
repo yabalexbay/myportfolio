@@ -1,0 +1,7 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "echo \"No install needed: the site is prebuilt and committed\"",
+  "buildCommand": "echo \"No build needed: run npm run build locally before committing\"",
+  "outputDirectory": "."
+}
