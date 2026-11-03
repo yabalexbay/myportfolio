@@ -8,3 +8,12 @@ Thumbs.db
 .idea/
 .vscode/
 CHAT_HISTORY.md
+node_modules/
+test-results/
+playwright-report/
+
+# Local notes and review artifacts (not part of the site)
+PORTFOLIO_BRIEF.md
+docs/Images/
+docs/screenshots/
+docs/evidence/

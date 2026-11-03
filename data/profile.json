@@ -1,0 +1,433 @@
+{
+  "site": {
+    "url": "https://ybalemu.vercel.app/",
+    "title": "Yabetse Tesfaye | Backend Software Engineer",
+    "description": "I build backend services and APIs in Python, FastAPI, and PostgreSQL, with a focus on application security and maintainable architecture.",
+    "ogImage": "og.png",
+    "ogImageAlt": "Yabetse Tesfaye, Backend Software Engineer",
+    "resumeFile": "Resume/Yabetse_Tesfaye_Resume.pdf",
+    "resumeDownloadName": "Yabetse_Tesfaye_Resume.pdf"
+  },
+  "person": {
+    "name": "Yabetse Tesfaye",
+    "title": "Backend Software Engineer",
+    "valueStatement": "I build backend services and APIs in Python, FastAPI, and PostgreSQL, with a focus on application security and maintainable architecture.",
+    "email": "yabtesfu@gmail.com",
+    "phone": "+251966331110",
+    "location": {
+      "city": "Addis Ababa",
+      "country": "Ethiopia",
+      "countryCode": "ET"
+    },
+    "links": {
+      "linkedin": "https://www.linkedin.com/in/yabetse-tesfaye/",
+      "github": "https://github.com/yabtesfu"
+    }
+  },
+  "ui": {
+    "skipLink": "Skip to content",
+    "navLabel": "Primary",
+    "nav": [
+      {
+        "label": "Projects",
+        "href": "#projects"
+      },
+      {
+        "label": "Experience",
+        "href": "#experience"
+      },
+      {
+        "label": "About",
+        "href": "#about"
+      },
+      {
+        "label": "Contact",
+        "href": "#contact"
+      }
+    ],
+    "themeToLight": "Switch to light theme",
+    "themeToDark": "Switch to dark theme",
+    "heroButtons": {
+      "projects": "View Projects",
+      "resume": "Download Resume",
+      "github": "GitHub",
+      "linkedin": "LinkedIn"
+    },
+    "techLabel": "Technologies I work with",
+    "headings": {
+      "projects": "Projects",
+      "experience": "Experience",
+      "about": "About",
+      "education": "Education",
+      "contact": "Contact"
+    },
+    "projectLink": "GitHub",
+    "projectLinkLabel": "{name} on GitHub",
+    "tagsLabel": "Stack",
+    "moreOnGitHub": "More on GitHub",
+    "dateJoiner": "to",
+    "gpaLabel": "GPA",
+    "contactLabels": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub"
+    },
+    "footer": "© 2026 Yabetse Tesfaye"
+  },
+  "tech": [
+    {
+      "name": "Python",
+      "icon": "python"
+    },
+    {
+      "name": "FastAPI",
+      "icon": "fastapi"
+    },
+    {
+      "name": "PostgreSQL",
+      "icon": "postgresql"
+    },
+    {
+      "name": "Go",
+      "icon": "go"
+    },
+    {
+      "name": "Redis",
+      "icon": "redis"
+    },
+    {
+      "name": "Docker",
+      "icon": "docker"
+    },
+    {
+      "name": "GitHub Actions",
+      "icon": "githubactions"
+    },
+    {
+      "name": "Terraform",
+      "icon": "terraform"
+    },
+    {
+      "name": "Rust",
+      "icon": "rust",
+      "mono": true
+    },
+    {
+      "name": "Node.js",
+      "icon": "nodejs"
+    },
+    {
+      "name": "Linux",
+      "icon": "linux",
+      "mono": true
+    },
+    {
+      "name": "Git",
+      "icon": "git"
+    }
+  ],
+  "projects": [
+    {
+      "name": "ImmuStore DB",
+      "summary": "A distributed database engine written from scratch in pure Python.",
+      "bullets": [
+        "Copy on write B+ tree with crash safe commits, MVCC snapshots, and optimistic transactions.",
+        "Raft replication with automatic failover, a Redis protocol server, and deterministic simulation testing."
+      ],
+      "tags": [
+        "Python",
+        "Raft",
+        "MVCC",
+        "B+ Tree"
+      ],
+      "url": "https://github.com/yabtesfu/immustore-db",
+      "resumeLine": "Pure Python database engine with a copy on write B+ tree, MVCC, and Raft replication."
+    },
+    {
+      "name": "Nodechain Lab",
+      "summary": "A real time blockchain network built from scratch in Node.js.",
+      "bullets": [
+        "Proof of work mining with retargeting difficulty and secp256k1 signed transactions.",
+        "WebSocket gossip with heaviest chain consensus that resyncs forks, shown on a live dashboard."
+      ],
+      "tags": [
+        "Node.js",
+        "socket.io",
+        "React",
+        "Docker"
+      ],
+      "url": "https://github.com/yabtesfu/nodechain-lab",
+      "resumeLine": "Real time Node.js blockchain with proof of work, signed transactions, and WebSocket gossip."
+    },
+    {
+      "name": "RustV OS Lab",
+      "summary": "A bare metal RISC V kernel written in Rust that boots QEMU without firmware.",
+      "bullets": [
+        "Preemptive round robin scheduler, Sv39 paging, and user mode syscalls through ecall.",
+        "Hand built virtio block driver, with CI that boots the kernel headless in QEMU."
+      ],
+      "tags": [
+        "Rust",
+        "RISC V",
+        "QEMU"
+      ],
+      "url": "https://github.com/yabtesfu/rustv-os-lab",
+      "resumeLine": "Bare metal RISC V kernel in Rust with preemptive scheduling, Sv39 paging, and a virtio block driver."
+    },
+    {
+      "name": "Litestar",
+      "kicker": "Open source contribution",
+      "summary": "Co authored a merged fix to the Litestar Python ASGI framework, Aug, 2024.",
+      "bullets": [
+        "Wrapped all middleware in OpenTelemetry tracing so exceptions in the outermost layer are captured.",
+        "Spans are now created for every request, and errors are logged under the correct span."
+      ],
+      "tags": [
+        "Python",
+        "ASGI",
+        "OpenTelemetry"
+      ],
+      "url": "https://github.com/litestar-org/litestar/pull/3689",
+      "linkLabel": "Litestar pull request on GitHub",
+      "date": "2024-08",
+      "resumeLine": "Co authored a merged OpenTelemetry tracing fix covering all middleware."
+    }
+  ],
+  "experience": [
+    {
+      "company": "Revelo",
+      "title": "AI Infrastructure and DevOps Training Engineer",
+      "start": "2026-02",
+      "end": "2026-10",
+      "bullets": [
+        "Developed and evaluated Infrastructure as Code scenarios in Terraform, AWS CDK, Python, YAML, and JSON for AI training and technical assessment.",
+        "Reviewed infrastructure implementations against technical requirements, checking configuration correctness, dependencies, resource definitions, and deployment feasibility.",
+        "Identified errors and omissions in AI generated infrastructure code and documented findings to improve model quality."
+      ],
+      "tags": [
+        "Infrastructure as Code",
+        "Terraform",
+        "AWS CDK",
+        "Python",
+        "Model Evaluation"
+      ],
+      "resumeBullets": [
+        "Built and evaluated Infrastructure as Code scenarios in Terraform, AWS CDK, Python, YAML, and JSON for AI training.",
+        "Reviewed AI generated infrastructure for correctness and feasibility, documenting errors to improve model quality."
+      ]
+    },
+    {
+      "company": "Turing",
+      "title": "LLM Trainer and AI Data Annotator",
+      "start": "2025-04",
+      "end": "2026-02",
+      "bullets": [
+        "Produced detailed video annotations for multimodal AI training, capturing actions, context, and temporal relationships.",
+        "Evaluated AI generated responses through targeted prompts, expected output comparisons, and response validation."
+      ],
+      "tags": [
+        "LLM Training",
+        "Data Annotation",
+        "Model Evaluation"
+      ]
+    },
+    {
+      "company": "Upwork",
+      "title": "FlutterFlow Mobile Application Developer",
+      "start": "2024-12",
+      "end": "2025-04",
+      "bullets": [
+        "Developed cross platform mobile apps with FlutterFlow and Flutter, translating client requirements into working features.",
+        "Integrated REST APIs and backend services with asynchronous data handling, validation, and state management."
+      ],
+      "tags": [
+        "FlutterFlow",
+        "Flutter",
+        "REST APIs"
+      ]
+    },
+    {
+      "company": "AfroChat",
+      "title": "Backend Engineer and Project Co Lead",
+      "start": "2023-01",
+      "end": "2024-12",
+      "bullets": [
+        "Helped lead six backend engineers migrating AfroChat from Flask and MongoDB to FastAPI and PostgreSQL, implementing asynchronous database operations with SQLAlchemy and asyncpg.",
+        "Refactored backend services with Domain Driven Design and Test Driven Development, improving code organization and automated testing.",
+        "Built GitHub Actions workflows and Python utilities for automated testing, Docker image builds, and deployment."
+      ],
+      "tags": [
+        "Python",
+        "FastAPI",
+        "SQLAlchemy",
+        "asyncpg",
+        "GitHub Actions",
+        "Docker"
+      ],
+      "resumeBullets": [
+        "Helped lead six engineers migrating from Flask and MongoDB to FastAPI and PostgreSQL with async SQLAlchemy.",
+        "Refactored services with Domain Driven Design and Test Driven Development, improving modularity and automated testing.",
+        "Built GitHub Actions workflows and Python tooling for testing, Docker image builds, and deployment."
+      ]
+    },
+    {
+      "company": "Eskalate",
+      "title": "Full Stack Engineer",
+      "start": "2021-01",
+      "end": "2023-01",
+      "bullets": [
+        "Designed and implemented authentication and authorization with reusable application security components.",
+        "Developed secure backend APIs with input validation, access controls, rate limiting, and audit logging.",
+        "Built and deployed an AI powered conversational assistant that automated FAQs and selected support workflows."
+      ],
+      "tags": [
+        "Authentication",
+        "API Security",
+        "Python",
+        "AI Assistants"
+      ],
+      "resumeBullets": [
+        "Designed authentication and authorization with reusable application security components.",
+        "Built secure backend APIs with input validation, access controls, rate limiting, and audit logging.",
+        "Built and deployed an AI powered assistant that automated FAQs and selected support workflows."
+      ]
+    },
+    {
+      "company": "Eskalate",
+      "title": "Junior Full Stack Engineer",
+      "start": "2019-11",
+      "end": "2021-01",
+      "location": "Addis Ababa",
+      "bullets": [
+        "Developed web application features spanning user interfaces, authentication, authorization, and backend logic.",
+        "Contributed to a team project that placed third in a technology competition."
+      ],
+      "tags": [
+        "Full Stack",
+        "Flutter",
+        "CI/CD",
+        "Containerization"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "school": "American College of Technology (ACT)",
+      "degree": "Bachelor of Software Engineering",
+      "start": "2018-10",
+      "end": "2022-07",
+      "gpa": "3.82"
+    },
+    {
+      "school": "A2SV, Africa to Silicon Valley",
+      "degree": "Software Engineering Program, Data Structures and Algorithms",
+      "start": "2022-01",
+      "end": "2023-03"
+    }
+  ],
+  "about": [
+    "I build backend services and APIs, focusing on Python, FastAPI, PostgreSQL, application security, and maintainable architecture.",
+    "I learn systems from first principles, which is why I have written a database engine with Raft and MVCC, a RISC V kernel in Rust, and a peer to peer blockchain.",
+    "I am looking for backend and full stack roles on technically challenging products."
+  ],
+  "contact": {
+    "line": "Open to backend and full stack engineering roles."
+  },
+  "resume": {
+    "pageTitle": "Yabetse Tesfaye Resume",
+    "sections": {
+      "summary": "Summary",
+      "skills": "Technical Skills",
+      "experience": "Professional Experience",
+      "projects": "Projects",
+      "education": "Education",
+      "awards": "Awards",
+      "volunteering": "Volunteering"
+    },
+    "linkLabels": {
+      "linkedin": "LinkedIn",
+      "portfolio": "Portfolio",
+      "github": "GitHub"
+    },
+    "summary": "Backend Software Engineer with 6+ years of experience building backend services and APIs in Python, FastAPI, and PostgreSQL, with a focus on application security and maintainable architecture. Helped lead six backend engineers through a migration from Flask and MongoDB to FastAPI and PostgreSQL.",
+    "skills": [
+      {
+        "name": "Languages",
+        "items": [
+          "Python",
+          "Go",
+          "JavaScript",
+          "SQL",
+          "Java",
+          "C++",
+          "Bash",
+          "Rust"
+        ]
+      },
+      {
+        "name": "Frameworks and Databases",
+        "items": [
+          "FastAPI",
+          "Gin",
+          "SQLAlchemy",
+          "asyncpg",
+          "PostgreSQL",
+          "MongoDB",
+          "Redis",
+          "Flutter",
+          "FlutterFlow"
+        ]
+      },
+      {
+        "name": "Cloud and DevOps",
+        "items": [
+          "GCP",
+          "Docker",
+          "Kubernetes",
+          "Terraform",
+          "AWS CDK",
+          "Git",
+          "GitHub Actions",
+          "Jenkins",
+          "CI/CD"
+        ]
+      },
+      {
+        "name": "Testing and APIs",
+        "items": [
+          "Pytest",
+          "Test Driven Development",
+          "REST APIs",
+          "Debugging"
+        ]
+      }
+    ],
+    "awards": [
+      {
+        "title": "1st Place, Ethiopian Competitive Programming Contest, ALX",
+        "date": "2024-01"
+      },
+      {
+        "title": "1st Place, A2SV Project Competition, Atrons",
+        "date": "2022-09",
+        "note": "$8,000 team prize"
+      },
+      {
+        "title": "Hackathon Winner, Alpha 1S Robot Bluetooth Control",
+        "date": "2021-04",
+        "note": "Reverse engineered Bluetooth protocols to enable direct robot motor control."
+      },
+      {
+        "title": "Winner, UNDP and Ministry of Innovation and Technology COVID 19 Innovation Challenge",
+        "date": "2020"
+      }
+    ],
+    "volunteering": [
+      {
+        "title": "Robotics Instructor",
+        "organization": "Eagle Robotics",
+        "date": "2021",
+        "note": "Mentored 30 students in Python and Raspberry Pi robotics."
+      }
+    ]
+  }
+}

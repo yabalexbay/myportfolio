@@ -1,0 +1,104 @@
+/* Design tokens. Every color, font, and radius the site uses lives here.
+   Dark is the default; [data-theme="light"] overrides it. Without JavaScript,
+   the media query below follows the visitor's system setting instead. */
+
+@font-face {
+  font-family: "Inter";
+  src: url("fonts/inter-latin-wght.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("fonts/jetbrains-mono-latin-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Metric matched fallbacks, so the swap to the web fonts does not shift layout. */
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial");
+  ascent-override: 90.44%;
+  descent-override: 22.52%;
+  line-gap-override: 0%;
+  size-adjust: 107.12%;
+}
+
+@font-face {
+  font-family: "JetBrains Mono Fallback";
+  src: local("Courier New");
+  ascent-override: 76.79%;
+  descent-override: 22.6%;
+  line-gap-override: 0%;
+  size-adjust: 133.3%;
+}
+
+:root {
+  --font-sans: "Inter", "Inter Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "JetBrains Mono Fallback", ui-monospace, Menlo, monospace;
+
+  --radius-btn: 12px;
+  --radius-card: 14px;
+  --radius-tag: 7px;
+
+  --grid-gap: 39px;
+  --grid-dot: 1.2px;
+
+  --speed: 200ms;
+  --measure: 70ch;
+  --width: 1120px;
+
+  /* Dark theme (default) */
+  --bg: #0B0D0F;
+  --surface: #111417;
+  --surface-raised: #15191D;
+  --border: #252A30;
+  --border-strong: #3C444D;
+  --text: #E9EDF1;
+  --text-muted: #A1AAB3;
+  --text-faint: #8A949E;
+  --accent: #7AA2D6;
+  --dot: rgb(150 160 172 / 0.28);
+  --particle: rgb(64 196 184 / 0.34);
+  --icon-mono-filter: invert(1) brightness(0.92);
+
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #F7F9FC;
+    --surface: #FFFFFF;
+    --surface-raised: #F1F4F8;
+    --border: #DCE2E9;
+    --border-strong: #AEB9C5;
+    --text: #0E1620;
+    --text-muted: #46515C;
+    --text-faint: #56616C;
+    --accent: #2E5C9A;
+    --dot: rgb(104 116 132 / 0.28);
+    --particle: rgb(20 150 140 / 0.24);
+    --icon-mono-filter: none;
+    color-scheme: light;
+  }
+}
+
+:root[data-theme="light"] {
+  --bg: #F7F9FC;
+  --surface: #FFFFFF;
+  --surface-raised: #F1F4F8;
+  --border: #DCE2E9;
+  --border-strong: #AEB9C5;
+  --text: #0E1620;
+  --text-muted: #46515C;
+  --text-faint: #56616C;
+  --accent: #2E5C9A;
+  --dot: rgb(104 116 132 / 0.28);
+  --particle: rgb(20 150 140 / 0.24);
+  --icon-mono-filter: none;
+  color-scheme: light;
+}
