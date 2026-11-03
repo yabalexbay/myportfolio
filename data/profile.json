@@ -149,6 +149,10 @@
       ],
       "modules": "modules",
       "skip": "Skip intro"
+    },
+    "menuLabels": {
+      "open": "Open menu",
+      "close": "Close menu"
     }
   },
   "tech": [

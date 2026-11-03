@@ -17,6 +17,7 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 html {
+  font-size: 87.5%;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -471,11 +472,11 @@ nav a.active { color: var(--text-strong); font-weight: 600; }
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 2.3rem; height: 2.3rem;
+  width: 2.45rem; height: 2.45rem;
   margin-left: 0.2rem;
   padding: 0;
   border: 1px solid var(--border-chip);
-  border-radius: var(--radius-chip);
+  border-radius: 50%;
   background: transparent;
   color: var(--text-body);
   cursor: pointer;
@@ -518,10 +519,10 @@ nav a.active { color: var(--text-strong); font-weight: 600; }
 .hero-title {
   margin-bottom: 1.1rem;
   font-family: var(--font-display);
-  font-size: clamp(2.6rem, 1rem + 5.6vw, 5.4rem);
-  font-weight: 850;
-  line-height: 0.98;
-  letter-spacing: -0.035em;
+  font-size: clamp(2.1rem, 1.1rem + 2.6vw, 3.05rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
   color: var(--text-heading);
   text-wrap: balance;
@@ -536,7 +537,7 @@ nav a.active { color: var(--text-strong); font-weight: 600; }
   min-height: 1.5em;
   margin-bottom: 1.4rem;
   font-family: var(--font-mono);
-  font-size: clamp(1rem, 0.85rem + 0.6vw, 1.35rem);
+  font-size: clamp(0.98rem, 0.88rem + 0.3vw, 1.12rem);
   font-weight: 400;
   letter-spacing: var(--ls-mono);
   color: var(--text-body);
@@ -554,9 +555,9 @@ nav a.active { color: var(--text-strong); font-weight: 600; }
 }
 
 .hero-quote {
-  max-width: 40rem;
-  margin: 0 auto 2.4rem;
-  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  max-width: 34rem;
+  margin: 0 auto 2.2rem;
+  font-size: 1.02rem;
   line-height: 1.75;
   color: var(--text-body);
   text-wrap: pretty;
@@ -578,13 +579,13 @@ nav a.active { color: var(--text-strong); font-weight: 600; }
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  min-height: 2.9rem;
-  padding: 0 1.15rem;
-  border-radius: var(--radius-chip);
+  min-height: 2.75rem;
+  padding: 0 1.2rem;
+  border-radius: var(--radius-pill);
   border: 1px solid var(--border-chip);
   background: var(--tint-chip);
   color: var(--text-strong);
-  font-size: 0.95rem;
+  font-size: 0.93rem;
   font-weight: 600;
   line-height: 1.2;
   white-space: nowrap;
@@ -615,7 +616,7 @@ nav a.active { color: var(--text-strong); font-weight: 600; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 3.4rem; height: 3.4rem;
+  width: 3.2rem; height: 3.2rem;
   border: 1px solid transparent;
   border-radius: var(--radius-chip);
   transition: transform var(--speed) var(--ease),
@@ -629,7 +630,7 @@ nav a.active { color: var(--text-strong); font-weight: 600; }
   border-color: var(--glow-line);
   box-shadow: var(--glow-ring);
 }
-.tech-strip img { width: 2.25rem; height: 2.25rem; }
+.tech-strip img { width: 2.05rem; height: 2.05rem; }
 .tech-strip img.mono { filter: var(--icon-mono-filter); }
 
 .scroll-cue {
@@ -668,7 +669,7 @@ nav a.active { color: var(--text-strong); font-weight: 600; }
   margin-left: auto;
   margin-right: auto;
 }
-.section-head { margin-bottom: 3.25rem; }
+.section-head { margin-bottom: 2.6rem; }
 .section-label {
   margin-bottom: 0.7rem;
   font-family: var(--font-mono);
@@ -680,10 +681,10 @@ nav a.active { color: var(--text-strong); font-weight: 600; }
 }
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 1.4rem + 2vw, 3.1rem);
-  font-weight: 850;
-  line-height: 1.02;
-  letter-spacing: -0.03em;
+  font-size: clamp(1.6rem, 1.2rem + 1.1vw, 2.15rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
   color: var(--text-heading);
   text-wrap: balance;
@@ -708,7 +709,7 @@ nav a.active { color: var(--text-strong); font-weight: 600; }
   background: var(--tint-chip);
   color: var(--text-tag);
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   line-height: 1.6;
   letter-spacing: var(--ls-mono);
   white-space: nowrap;
@@ -743,9 +744,9 @@ nav a.active { color: var(--text-strong); font-weight: 600; }
 }
 .project-card h3 {
   margin-bottom: 0.45rem;
-  font-size: 1.3rem;
-  font-weight: 750;
-  line-height: 1.15;
+  font-size: 1.18rem;
+  font-weight: 700;
+  line-height: 1.2;
   letter-spacing: -0.02em;
   color: var(--text-strong);
 }
@@ -834,9 +835,9 @@ nav a.active { color: var(--text-strong); font-weight: 600; }
 }
 .exp-top h3,
 .exp-top h4 {
-  font-size: 1.2rem;
-  font-weight: 750;
-  line-height: 1.25;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.3;
   letter-spacing: -0.015em;
   color: var(--text-strong);
 }
@@ -872,7 +873,7 @@ nav a.active { color: var(--text-strong); font-weight: 600; }
 }
 .about-lead p {
   max-width: var(--measure-text);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   line-height: 1.85;
   color: var(--text-body);
 }
@@ -920,7 +921,7 @@ nav a.active { color: var(--text-strong); font-weight: 600; }
   justify-content: center;
   width: 2.9rem; height: 2.9rem;
   border: 1px solid var(--border-chip);
-  border-radius: var(--radius-chip);
+  border-radius: 50%;
   background: var(--tint-chip);
   box-shadow: var(--shadow-chip);
   color: var(--text-body);
@@ -1106,41 +1107,91 @@ body.preloading .hero-inner * { animation-play-state: paused !important; }
   .projects-grid { gap: 2.75rem 2rem; }
 }
 
-/* Small tablet and large phone */
+/* Menu button: three lines that fold into a cross. Only shown on narrow screens. */
+.menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.45rem; height: 2.45rem;
+  padding: 0;
+  border: 1px solid var(--border-chip);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-strong);
+  cursor: pointer;
+  transition: background var(--speed) var(--ease), border-color var(--speed) var(--ease), box-shadow var(--speed) var(--ease);
+}
+.menu-toggle:hover { background: var(--tint-chip-hover); border-color: var(--glow-line); box-shadow: var(--glow-ring); }
+.menu-icon { position: relative; display: block; width: 16px; height: 12px; }
+.menu-icon span {
+  position: absolute;
+  left: 0;
+  width: 100%; height: 1.75px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform 0.28s var(--ease-out), opacity 0.2s ease, top 0.28s var(--ease-out);
+}
+.menu-icon span:nth-child(1) { top: 0; }
+.menu-icon span:nth-child(2) { top: 5px; }
+.menu-icon span:nth-child(3) { top: 10px; }
+.menu-open .menu-icon span:nth-child(1) { top: 5px; transform: rotate(45deg); }
+.menu-open .menu-icon span:nth-child(2) { opacity: 0; transform: scaleX(0.4); }
+.menu-open .menu-icon span:nth-child(3) { top: 5px; transform: rotate(-45deg); }
+
+/* Small tablet and phone */
 @media (max-width: 768px) {
-  :root { --header-h: 7.25rem; }
+  :root { --header-h: 4.6rem; }
 
-  header {
-    position: absolute;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.6rem;
-    height: auto;
-    padding: 0.9rem 0.75rem;
+  header { padding: 0 1rem; }
+  .logo { top: 1.15rem; left: 1rem; }
+  .nav-shell {
+    position: relative;
+    gap: 0.35rem;
+    height: 3.1rem;
+    margin: 0 0 0 auto;
+    padding: 0 0.32rem;
   }
-  .logo { position: static; align-items: center; }
+  .nav-pill { display: none; }
+  .theme-switch { margin-left: 0; }
+  .js .menu-toggle { display: inline-flex; }
 
-  /* The pill becomes a full width bar of links; the theme toggle moves up
-     beside the wordmark so all five links fit on one row. */
-  .nav-shell { display: contents; }
-  nav {
-    order: 3;
-    justify-content: space-between;
-    width: 100%;
-    padding: 0.3rem;
-    background: var(--surface-nav);
-    backdrop-filter: saturate(1.4) blur(10px);
-    -webkit-backdrop-filter: saturate(1.4) blur(10px);
+  /* The links live in a small dropdown card under the pill. */
+  .js nav {
+    position: absolute;
+    top: calc(100% + 0.6rem);
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.15rem;
+    min-width: 13rem;
+    padding: 0.45rem;
+    background: var(--surface-card);
     border: 1px solid var(--border-soft);
     border-radius: var(--radius-card);
-    box-shadow: var(--shadow-nav);
+    box-shadow: var(--shadow-card-lg);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px) scale(0.98);
+    transform-origin: top right;
+    transition: opacity 0.2s ease, transform 0.25s var(--ease-out), visibility 0s linear 0.25s;
   }
-  nav a { padding: 0.45rem 0.6rem; font-size: 0.875rem; }
-  .theme-switch { position: absolute; top: 0.85rem; right: 0.75rem; margin: 0; }
-  .nav-pill { display: none; }
+  .js .menu-open nav {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition-delay: 0s;
+  }
+  .js nav a { padding: 0.7rem 0.95rem; border-radius: var(--radius-chip); font-size: 1rem; }
+  .js nav a:hover { background: var(--tint-chip); }
   nav a.active { background: color-mix(in srgb, var(--accent) 16%, transparent); }
 
-  .pg-section { padding: 5rem 1.25rem; }
+  /* Without JavaScript the links simply sit in the pill and wrap. */
+  :root:not(.js) header { position: absolute; flex-wrap: wrap; height: auto; padding: 0.8rem; gap: 0.6rem; }
+  :root:not(.js) .logo { position: static; }
+  :root:not(.js) .nav-shell { width: 100%; height: auto; padding: 0.3rem; }
+  :root:not(.js) nav { flex-wrap: wrap; justify-content: center; }
+
+  .pg-section { padding: 4.75rem 1.25rem; }
   .projects-grid { grid-template-columns: 1fr; gap: 2.25rem; }
 
   /* Cards are near full width here, so they rise instead of drifting sideways. */
@@ -1160,11 +1211,9 @@ body.preloading .hero-inner * { animation-play-state: paused !important; }
 
 /* Phone */
 @media (max-width: 480px) {
-  nav a { padding: 0.4rem 0.45rem; font-size: 0.84rem; }
-
   .hero-inner { padding-top: 2.5rem; }
-  .hero-actions { flex-direction: column; align-items: stretch; width: 100%; }
-  .btn-primary, .btn-secondary { width: 100%; }
+  .hero-actions { gap: 0.55rem; }
+  .btn-primary, .btn-secondary { min-height: 2.6rem; padding: 0 1rem; font-size: 0.9rem; }
 
   .tech-strip { gap: 0.35rem; }
   .tech-strip li { width: 3rem; height: 3rem; }
@@ -1176,6 +1225,3 @@ body.preloading .hero-inner * { animation-play-state: paused !important; }
   .hero::after { display: none; }
 }
 
-@media (max-width: 360px) {
-  nav a { padding: 0.4rem 0.3rem; font-size: 0.78rem; }
-}

@@ -225,11 +225,12 @@ const html = `<!DOCTYPE html>
     </a>
 
     <div class="nav-shell">
-      <nav aria-label="${esc(ui.navLabel)}">
+      <nav id="primary-nav" aria-label="${esc(ui.navLabel)}">
         <span class="nav-pill" id="nav-pill" aria-hidden="true"></span>
         ${ui.nav.map((n, i) => `<a href="${esc(n.href)}"${i === 0 ? ' class="active"' : ''}>${esc(n.label)}</a>`).join('\n        ')}
       </nav>
       <button class="theme-switch" id="theme-toggle" type="button" data-mode="system" aria-label="${esc(ui.themeLabels.system)}" data-label-light="${esc(ui.themeLabels.light)}" data-label-dark="${esc(ui.themeLabels.dark)}" data-label-system="${esc(ui.themeLabels.system)}">${ICON.sun}${ICON.moon}${ICON.system}</button>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="${esc(ui.menuLabels.open)}" data-label-open="${esc(ui.menuLabels.open)}" data-label-close="${esc(ui.menuLabels.close)}"><span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span></button>
     </div>
   </header>
 

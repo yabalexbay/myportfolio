@@ -293,6 +293,39 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => move
 updateNav();
 
 
+/* ---------- MOBILE MENU ----------
+   On narrow screens the links fold into a dropdown behind the menu button.
+   It closes on a link tap, Escape, a tap outside, or widening the window. */
+const menuToggle = document.getElementById('menu-toggle');
+const headerElForMenu = document.getElementById('site-header');
+const MOBILE = window.matchMedia('(max-width: 768px)');
+
+function setMenu(open) {
+  if (!menuToggle || !headerElForMenu) return;
+  headerElForMenu.classList.toggle('menu-open', open);
+  menuToggle.setAttribute('aria-expanded', String(open));
+  menuToggle.setAttribute('aria-label', open ? menuToggle.dataset.labelClose : menuToggle.dataset.labelOpen);
+}
+
+if (menuToggle) {
+  menuToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setMenu(menuToggle.getAttribute('aria-expanded') !== 'true');
+  });
+  navLinks.forEach((link) => link.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true') {
+      setMenu(false);
+      menuToggle.focus();
+    }
+  });
+  document.addEventListener('click', (e) => {
+    if (!headerElForMenu.contains(e.target)) setMenu(false);
+  });
+  MOBILE.addEventListener('change', () => setMenu(false));
+}
+
+
 /* ---------- SECTION TITLES: SPLIT INTO RISING WORDS ---------- */
 document.querySelectorAll('.section-title').forEach((title) => {
   if (title.dataset.split) return;

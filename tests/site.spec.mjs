@@ -113,14 +113,40 @@ test.describe('content and layout', () => {
     });
   }
 
-  test('mobile nav fits on one row', async ({ page }) => {
-    for (const width of [320, 375]) {
+  test('mobile menu opens, closes, and never overlaps the header', async ({ page }) => {
+    for (const width of [320, 375, 768]) {
       await page.setViewportSize({ width, height: 800 });
       await page.goto('/');
       await page.evaluate(() => document.fonts.ready);
-      const tops = await page.locator('nav a').evaluateAll((els) => els.map((e) => Math.round(e.getBoundingClientRect().top)));
-      expect(new Set(tops).size, `${width}px`).toBe(1);
+      const toggle = page.locator('#menu-toggle');
+      const link = page.locator('nav a', { hasText: 'Experience' });
+
+      await expect(toggle, `${width}px`).toBeVisible();
+      await expect(link).toBeHidden();
+      const logo = await page.locator('.logo').boundingBox();
+      const shell = await page.locator('.nav-shell').boundingBox();
+      expect(logo.x + logo.width, `${width}px logo clears the buttons`).toBeLessThan(shell.x);
+
+      await toggle.click();
+      await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+      await expect(toggle).toHaveAccessibleName('Close menu');
+      await expect(link).toBeVisible();
+
+      await page.keyboard.press('Escape');
+      await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+      await expect(link).toBeHidden();
+
+      await toggle.click();
+      await link.click();
+      await expect(toggle).toHaveAttribute('aria-expanded', 'false');
     }
+  });
+
+  test('desktop keeps the inline nav without a menu button', async ({ page }) => {
+    await page.setViewportSize({ width: 1024, height: 800 });
+    await page.goto('/');
+    await expect(page.locator('#menu-toggle')).toBeHidden();
+    await expect(page.locator('nav a', { hasText: 'Contact' })).toBeVisible();
   });
 
   test('resume download serves the PDF', async ({ page, request }) => {

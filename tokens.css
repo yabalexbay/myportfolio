@@ -71,9 +71,9 @@
   --ls-mono: 0.01em;
 
   /* Radii */
-  --radius-tag:  0.6rem;
+  --radius-tag:  999px;
   --radius-chip: 0.8rem;
-  --radius-card: 1.25rem;
+  --radius-card: 1.5rem;
   --radius-nav:  1.6rem;
   --radius-pill: 999px;
 
