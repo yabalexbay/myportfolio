@@ -37,7 +37,7 @@ export const BANNED_RE = /Nova|Eureka|30%|2014/;
 // Text a person can read: element text plus the attributes browsers and
 // screen readers expose. Scripts, styles, and URLs are not visible text.
 export function visibleTextOf(html) {
-  const attrs = [...html.matchAll(/\s(?:alt|aria-label|title|content)="([^"]*)"/g)]
+  const attrs = [...html.matchAll(/\s(?:alt|aria-label|title|content|data-label(?:-[a-z]+)?)="([^"]*)"/g)]
     .map((m) => m[1])
     .filter((v) => !/^(https?:|mailto:|width=|#|[\w.\/]+\.(png|svg|pdf)$|summary_large_image|website|en_US|index, follow)/.test(v));
   const text = html

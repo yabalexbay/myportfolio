@@ -29,6 +29,10 @@
     "navLabel": "Primary",
     "nav": [
       {
+        "label": "Home",
+        "href": "#home"
+      },
+      {
         "label": "Projects",
         "href": "#projects"
       },
@@ -45,8 +49,6 @@
         "href": "#contact"
       }
     ],
-    "themeToLight": "Switch to light theme",
-    "themeToDark": "Switch to dark theme",
     "heroButtons": {
       "projects": "View Projects",
       "resume": "Download Resume",
@@ -58,7 +60,7 @@
       "projects": "Projects",
       "experience": "Experience",
       "about": "About",
-      "education": "Education",
+      "education": "Where I've Studied",
       "contact": "Contact"
     },
     "projectLink": "GitHub",
@@ -68,10 +70,86 @@
     "dateJoiner": "to",
     "gpaLabel": "GPA",
     "contactLabels": {
+      "email": "Email",
       "linkedin": "LinkedIn",
       "github": "GitHub"
     },
-    "footer": "© 2026 Yabetse Tesfaye"
+    "footer": "© 2026 Yabetse Tesfaye",
+    "brandMark": {
+      "first": "Yabetse",
+      "dot": ".",
+      "last": "T"
+    },
+    "brandLabel": "Yabetse Tesfaye, home",
+    "themeLabels": {
+      "light": "Theme: light. Switch to dark",
+      "dark": "Theme: dark. Switch to system",
+      "system": "Theme: system. Switch to light"
+    },
+    "sections": {
+      "projects": {
+        "label": "01 / Projects",
+        "title": "Selected",
+        "accent": "Projects"
+      },
+      "experience": {
+        "label": "02 / Experience",
+        "title": "Where I've",
+        "accent": "Worked"
+      },
+      "about": {
+        "label": "03 / About",
+        "title": "About",
+        "accent": "Me"
+      },
+      "contact": {
+        "label": "04 / Contact",
+        "title": "Let's",
+        "accent": "Connect"
+      }
+    },
+    "scrollCue": "Scroll to projects",
+    "preloader": {
+      "tags": [
+        "Python",
+        "FastAPI",
+        "PostgreSQL",
+        "Go",
+        "Redis",
+        "Docker",
+        "Terraform",
+        "Rust"
+      ],
+      "panelTitle": "portfolio build",
+      "stages": [
+        {
+          "at": 0,
+          "text": "initializing interface"
+        },
+        {
+          "at": 18,
+          "text": "loading projects"
+        },
+        {
+          "at": 40,
+          "text": "compiling experience"
+        },
+        {
+          "at": 62,
+          "text": "linking services"
+        },
+        {
+          "at": 82,
+          "text": "checking dependencies"
+        },
+        {
+          "at": 96,
+          "text": "ready"
+        }
+      ],
+      "modules": "modules",
+      "skip": "Skip intro"
+    }
   },
   "tech": [
     {
@@ -325,9 +403,9 @@
     }
   ],
   "about": [
-    "I build backend services and APIs, focusing on Python, FastAPI, PostgreSQL, application security, and maintainable architecture.",
-    "I learn systems from first principles, which is why I have written a database engine with Raft and MVCC, a RISC V kernel in Rust, and a peer to peer blockchain.",
-    "I am looking for backend and full stack roles on technically challenging products."
+    "I build backend services and APIs, focusing on **Python, FastAPI, PostgreSQL**, application security, and maintainable architecture.",
+    "I learn systems from **first principles**, which is why I have written a database engine with Raft and MVCC, a RISC V kernel in Rust, and a peer to peer blockchain.",
+    "I am looking for **backend and full stack roles** on technically challenging products."
   ],
   "contact": {
     "line": "Open to backend and full stack engineering roles."

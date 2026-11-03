@@ -10,8 +10,8 @@ const { site, person, resume } = p;
 
 const font = (file) => `data:font/woff2;base64,${readFileSync(file).toString('base64')}`;
 const FONTS = `
-  @font-face { font-family: "Inter"; src: url(${font('fonts/inter-latin-wght.woff2')}) format("woff2-variations"); font-weight: 100 900; }
-  @font-face { font-family: "JetBrains Mono"; src: url(${font('fonts/jetbrains-mono-latin-400.woff2')}) format("woff2"); font-weight: 400; }`;
+  @font-face { font-family: "Geist"; src: url(${font('fonts/geist-latin-wght.woff2')}) format("woff2-variations"); font-weight: 100 900; }
+  @font-face { font-family: "Geist Mono"; src: url(${font('fonts/geist-mono-latin-wght.woff2')}) format("woff2-variations"); font-weight: 100 900; }`;
 
 const contactBits = [
   `<a href="mailto:${esc(person.email)}">${esc(person.email)}</a>`,
@@ -35,11 +35,11 @@ const resumeHtml = `<!DOCTYPE html>
   ${FONTS}
   @page { size: Letter; margin: 0.4in 0.5in; }
   * { box-sizing: border-box; }
-  body { margin: 0; font-family: "Inter", sans-serif; font-size: 9pt; line-height: 1.28; color: #111820; }
+  body { margin: 0; font-family: "Geist", sans-serif; font-size: 9pt; line-height: 1.28; color: #111820; }
   a { color: inherit; text-decoration: none; }
   header { text-align: center; margin-bottom: 8pt; }
   h1 { margin: 0; font-size: 20pt; font-weight: 800; letter-spacing: -0.02em; }
-  .title { margin: 1pt 0 4pt; font-family: "JetBrains Mono", monospace; font-size: 10pt; color: #3a4652; }
+  .title { margin: 1pt 0 4pt; font-family: "Geist Mono", monospace; font-size: 10pt; color: #3a4652; }
   .contact { font-size: 8.8pt; color: #3a4652; }
   .contact span + span::before { content: "|"; margin: 0 6pt; color: #9aa6b2; }
   .contact a { color: #23508a; }
@@ -48,7 +48,7 @@ const resumeHtml = `<!DOCTYPE html>
   p { margin: 0; }
   .row { display: flex; justify-content: space-between; gap: 12pt; margin-top: 3pt; }
   .row:first-of-type { margin-top: 0; }
-  .when { flex: none; font-family: "JetBrains Mono", monospace; font-size: 8.4pt; color: #3a4652; padding-top: 0.6pt; }
+  .when { flex: none; font-family: "Geist Mono", monospace; font-size: 8.4pt; color: #3a4652; padding-top: 0.6pt; }
   .org { font-weight: 700; }
   .role { font-weight: 500; }
   ul { margin: 1pt 0 0; padding-left: 12pt; }
@@ -60,7 +60,7 @@ const resumeHtml = `<!DOCTYPE html>
 </head>
 <body>
   <header>
-    <h1>${esc(person.name)}</h1>
+    <h1>${esc(person.name.split(' ')[0])} <span>${esc(person.name.split(' ').slice(1).join(' '))}</span></h1>
     <p class="title">${esc(person.title)}</p>
     <p class="contact">${contactBits.map((b) => `<span>${b}</span>`).join('')}</p>
   </header>
@@ -93,16 +93,17 @@ const ogHtml = `<!DOCTYPE html>
   html, body { margin: 0; width: 1200px; height: 630px; }
   body {
     display: flex; flex-direction: column; justify-content: center; padding: 0 96px; box-sizing: border-box;
-    font-family: "Inter", sans-serif; color: #E9EDF1; background-color: #0B0D0F;
-    background-image: radial-gradient(circle at center, rgb(150 160 172 / 0.28) 1.6px, transparent 2px);
+    font-family: "Geist", sans-serif; color: #E9EDF1; background-color: #0B0D0F;
+    background-image: radial-gradient(circle at center, rgb(222 232 245 / 0.3) 1.4px, transparent 1.9px);
     background-size: 39px 39px;
   }
-  h1 { margin: 0; font-size: 96px; font-weight: 800; letter-spacing: -0.035em; line-height: 1; }
-  .t { margin: 28px 0 0; font-family: "JetBrains Mono", monospace; font-size: 34px; color: #A1AAB3; }
-  .v { margin: 28px 0 0; max-width: 900px; font-size: 27px; line-height: 1.45; color: #A1AAB3; }
-  .u { position: absolute; left: 96px; bottom: 56px; font-family: "JetBrains Mono", monospace; font-size: 22px; color: #7AA2D6; }
+  h1 { margin: 0; font-size: 104px; font-weight: 850; letter-spacing: -0.035em; line-height: 0.98; text-transform: uppercase; }
+  h1 span { color: #8ec8ff; }
+  .t { margin: 28px 0 0; font-family: "Geist Mono", monospace; font-size: 34px; color: #bfcad7; }
+  .v { margin: 28px 0 0; max-width: 900px; font-size: 27px; line-height: 1.45; color: #8696a9; }
+  .u { position: absolute; left: 96px; bottom: 56px; font-family: "Geist Mono", monospace; font-size: 22px; color: #8ec8ff; }
 </style></head><body>
-  <h1>${esc(person.name)}</h1>
+  <h1>${esc(person.name.split(' ')[0])} <span>${esc(person.name.split(' ').slice(1).join(' '))}</span></h1>
   <p class="t">${esc(person.title)}</p>
   <p class="v">${esc(person.valueStatement)}</p>
   <p class="u">${esc(new URL(site.url).host)}</p>
