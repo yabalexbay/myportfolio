@@ -1,0 +1,316 @@
+{
+  "file": "Resume/MyResume(Yabetse Tesfaye).pdf",
+  "sha256": "e1917a6005994213613357a7939505601db2150b22e6ac4ad05ec3ba4b5cb080",
+  "annotations": [
+    {
+      "page": 1,
+      "uri": "mailto:yabtesfu@gmail.com",
+      "rectangle": [
+        64.5,
+        716.25,
+        165.75,
+        729.0
+      ]
+    },
+    {
+      "page": 1,
+      "uri": "tel:+251966331110",
+      "rectangle": [
+        177.75,
+        716.25,
+        255.75,
+        729.0
+      ]
+    },
+    {
+      "page": 1,
+      "uri": "https://www.linkedin.com/in/yabetse-tesfaye/",
+      "rectangle": [
+        381.75,
+        716.25,
+        429.75,
+        729.0
+      ]
+    },
+    {
+      "page": 1,
+      "uri": "https://ybalemu.vercel.app/",
+      "rectangle": [
+        441.75,
+        716.25,
+        492.75,
+        729.0
+      ]
+    },
+    {
+      "page": 1,
+      "uri": "https://github.com/yabtesfu",
+      "rectangle": [
+        504.75,
+        716.25,
+        548.25,
+        729.0
+      ]
+    },
+    {
+      "page": 1,
+      "uri": "https://www.revelo.com/",
+      "rectangle": [
+        28.5,
+        555.75,
+        69.0,
+        568.5
+      ]
+    },
+    {
+      "page": 1,
+      "uri": "https://www.revelo.com/",
+      "rectangle": [
+        61.5,
+        560.25,
+        68.25,
+        567.0
+      ]
+    },
+    {
+      "page": 1,
+      "uri": "https://www.turing.com/",
+      "rectangle": [
+        28.5,
+        519.75,
+        67.5,
+        532.5
+      ]
+    },
+    {
+      "page": 1,
+      "uri": "https://www.turing.com/",
+      "rectangle": [
+        60.0,
+        524.25,
+        66.75,
+        530.25
+      ]
+    },
+    {
+      "page": 1,
+      "uri": "https://upwork.com/",
+      "rectangle": [
+        28.5,
+        483.0,
+        74.25,
+        495.75
+      ]
+    },
+    {
+      "page": 1,
+      "uri": "https://upwork.com/",
+      "rectangle": [
+        66.75,
+        487.5,
+        72.75,
+        494.25
+      ]
+    },
+    {
+      "page": 1,
+      "uri": "https://afrochat.app/en",
+      "rectangle": [
+        28.5,
+        447.0,
+        120.0,
+        459.75
+      ]
+    },
+    {
+      "page": 1,
+      "uri": "https://afrochat.app/en",
+      "rectangle": [
+        112.5,
+        451.5,
+        119.25,
+        457.5
+      ]
+    },
+    {
+      "page": 1,
+      "uri": "https://eskalate.io/",
+      "rectangle": [
+        28.5,
+        376.5,
+        76.5,
+        389.25
+      ]
+    },
+    {
+      "page": 1,
+      "uri": "https://eskalate.io/",
+      "rectangle": [
+        69.0,
+        381.0,
+        75.0,
+        387.0
+      ]
+    },
+    {
+      "page": 1,
+      "uri": "https://eskalate.io/",
+      "rectangle": [
+        28.5,
+        328.5,
+        76.5,
+        341.25
+      ]
+    },
+    {
+      "page": 1,
+      "uri": "https://eskalate.io/",
+      "rectangle": [
+        69.0,
+        333.0,
+        75.0,
+        339.75
+      ]
+    },
+    {
+      "page": 1,
+      "uri": "https://github.com/yabtesfu/imustore-db-",
+      "rectangle": [
+        28.5,
+        271.5,
+        102.75,
+        284.25
+      ]
+    },
+    {
+      "page": 1,
+      "uri": "https://github.com/yabtesfu/imustore-db-",
+      "rectangle": [
+        95.25,
+        276.0,
+        102.0,
+        282.75
+      ]
+    },
+    {
+      "page": 1,
+      "uri": "https://github.com/litestar-org/litestar",
+      "rectangle": [
+        28.5,
+        235.5,
+        72.75,
+        248.25
+      ]
+    },
+    {
+      "page": 1,
+      "uri": "https://github.com/litestar-org/litestar",
+      "rectangle": [
+        65.25,
+        240.0,
+        72.0,
+        246.75
+      ]
+    },
+    {
+      "page": 1,
+      "uri": "https://github.com/abelkm99/pgxmock",
+      "rectangle": [
+        28.5,
+        210.75,
+        79.5,
+        223.5
+      ]
+    },
+    {
+      "page": 1,
+      "uri": "https://github.com/abelkm99/pgxmock",
+      "rectangle": [
+        72.0,
+        215.25,
+        78.75,
+        221.25
+      ]
+    },
+    {
+      "page": 1,
+      "uri": "https://github.com/yabtesfu/gan-lab-tensorflow",
+      "rectangle": [
+        28.5,
+        185.25,
+        114.75,
+        198.0
+      ]
+    },
+    {
+      "page": 1,
+      "uri": "https://github.com/yabtesfu/gan-lab-tensorflow",
+      "rectangle": [
+        107.25,
+        189.75,
+        113.25,
+        196.5
+      ]
+    },
+    {
+      "page": 1,
+      "uri": "https://act.edu.et/",
+      "rectangle": [
+        28.5,
+        115.5,
+        195.0,
+        128.25
+      ]
+    },
+    {
+      "page": 1,
+      "uri": "https://act.edu.et/",
+      "rectangle": [
+        187.5,
+        120.0,
+        193.5,
+        126.0
+      ]
+    },
+    {
+      "page": 1,
+      "uri": "https://a2sv.org/",
+      "rectangle": [
+        28.5,
+        78.75,
+        157.5,
+        91.5
+      ]
+    },
+    {
+      "page": 1,
+      "uri": "https://a2sv.org/",
+      "rectangle": [
+        150.0,
+        83.25,
+        156.75,
+        90.0
+      ]
+    },
+    {
+      "page": 1,
+      "uri": "https://eagle-code.com/",
+      "rectangle": [
+        28.5,
+        33.75,
+        123.75,
+        46.5
+      ]
+    },
+    {
+      "page": 1,
+      "uri": "https://eagle-code.com/",
+      "rectangle": [
+        116.25,
+        38.25,
+        122.25,
+        44.25
+      ]
+    }
+  ]
+}

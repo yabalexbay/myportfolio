@@ -1,0 +1,876 @@
+{
+  "note": "Google Fonts requests aborted after independent HTTP checks timed out; screenshots use fallback fonts. This is a diagnostic baseline, not final acceptance.",
+  "report": [
+    {
+      "width": 390,
+      "colorScheme": "light",
+      "loaderMs": 4081,
+      "roleCompleteMs": 6139,
+      "layout": {
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "bodyFont": "10.88px",
+        "navFont": "14px",
+        "projectFont": "10.88px",
+        "theme": "rgb(248, 251, 255)",
+        "heroActions": [
+          {
+            "text": "View Projects",
+            "rect": {
+              "x": 19.5,
+              "y": 358.0625,
+              "width": 351,
+              "height": 32.453125,
+              "top": 358.0625,
+              "right": 370.5,
+              "bottom": 390.515625,
+              "left": 19.5
+            }
+          },
+          {
+            "text": "Download Resume",
+            "rect": {
+              "x": 19.5,
+              "y": 402.46875,
+              "width": 351,
+              "height": 32.453125,
+              "top": 402.46875,
+              "right": 370.5,
+              "bottom": 434.921875,
+              "left": 19.5
+            }
+          },
+          {
+            "text": "LinkedIn",
+            "rect": {
+              "x": 19.5,
+              "y": 446.875,
+              "width": 351,
+              "height": 32.453125,
+              "top": 446.875,
+              "right": 370.5,
+              "bottom": 479.328125,
+              "left": 19.5
+            }
+          }
+        ]
+      },
+      "menu": {
+        "expanded": "true",
+        "nav": {
+          "x": 15,
+          "y": 82.66802978515625,
+          "width": 360,
+          "height": 254,
+          "top": 82.66802978515625,
+          "right": 375,
+          "bottom": 336.66802978515625,
+          "left": 15
+        },
+        "links": [
+          {
+            "text": "Home",
+            "rect": {
+              "x": 24,
+              "y": 91.66802978515625,
+              "width": 342,
+              "height": 44,
+              "top": 91.66802978515625,
+              "right": 366,
+              "bottom": 135.66802978515625,
+              "left": 24
+            }
+          },
+          {
+            "text": "Projects",
+            "rect": {
+              "x": 24,
+              "y": 139.66802978515625,
+              "width": 342,
+              "height": 44,
+              "top": 139.66802978515625,
+              "right": 366,
+              "bottom": 183.66802978515625,
+              "left": 24
+            }
+          },
+          {
+            "text": "About",
+            "rect": {
+              "x": 24,
+              "y": 187.66802978515625,
+              "width": 342,
+              "height": 44,
+              "top": 187.66802978515625,
+              "right": 366,
+              "bottom": 231.66802978515625,
+              "left": 24
+            }
+          },
+          {
+            "text": "Experience",
+            "rect": {
+              "x": 24,
+              "y": 235.66802978515625,
+              "width": 342,
+              "height": 44,
+              "top": 235.66802978515625,
+              "right": 366,
+              "bottom": 279.66802978515625,
+              "left": 24
+            }
+          },
+          {
+            "text": "Contact",
+            "rect": {
+              "x": 24,
+              "y": 283.66802978515625,
+              "width": 342,
+              "height": 44,
+              "top": 283.66802978515625,
+              "right": 366,
+              "bottom": 327.66802978515625,
+              "left": 24
+            }
+          }
+        ],
+        "escapeClosed": true
+      },
+      "errors": [],
+      "axeViolations": [
+        {
+          "id": "label-content-name-mismatch",
+          "impact": "serious",
+          "help": "Elements must have their visible text as part of their accessible name",
+          "nodes": [
+            {
+              "target": [
+                "#logo-sig"
+              ],
+              "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        },
+        {
+          "id": "landmark-one-main",
+          "impact": "moderate",
+          "help": "Document should have one main landmark",
+          "nodes": [
+            {
+              "target": [
+                "html"
+              ],
+              "failureSummary": "Fix all of the following:\n  Document does not have a main landmark"
+            }
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodes": [
+            {
+              "target": [
+                "#hero-name"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                ".hero-role"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                ".hero-quote"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                "a[download=\"My Resume(Yabetse Tesfaye).pdf\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                ".btn-secondary[target=\"_blank\"][rel=\"noopener\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                ".social-row"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                ".tech-strip"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                ".scroll-cue"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                "#projects"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                "#about"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                "#experience"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                "#contact"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "colorScheme": "dark",
+      "loaderMs": 3795,
+      "roleCompleteMs": 5814,
+      "layout": {
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "bodyFont": "10.88px",
+        "navFont": "14px",
+        "projectFont": "10.88px",
+        "theme": "rgb(8, 12, 18)",
+        "heroActions": [
+          {
+            "text": "View Projects",
+            "rect": {
+              "x": 19.5,
+              "y": 358.0625,
+              "width": 351,
+              "height": 32.453125,
+              "top": 358.0625,
+              "right": 370.5,
+              "bottom": 390.515625,
+              "left": 19.5
+            }
+          },
+          {
+            "text": "Download Resume",
+            "rect": {
+              "x": 19.5,
+              "y": 402.46875,
+              "width": 351,
+              "height": 32.453125,
+              "top": 402.46875,
+              "right": 370.5,
+              "bottom": 434.921875,
+              "left": 19.5
+            }
+          },
+          {
+            "text": "LinkedIn",
+            "rect": {
+              "x": 19.5,
+              "y": 446.875,
+              "width": 351,
+              "height": 32.453125,
+              "top": 446.875,
+              "right": 370.5,
+              "bottom": 479.328125,
+              "left": 19.5
+            }
+          }
+        ]
+      },
+      "menu": {
+        "expanded": "true",
+        "nav": {
+          "x": 15,
+          "y": 82.80870056152344,
+          "width": 360,
+          "height": 254.00001525878906,
+          "top": 82.80870056152344,
+          "right": 375,
+          "bottom": 336.8087158203125,
+          "left": 15
+        },
+        "links": [
+          {
+            "text": "Home",
+            "rect": {
+              "x": 24,
+              "y": 91.80870056152344,
+              "width": 342,
+              "height": 44,
+              "top": 91.80870056152344,
+              "right": 366,
+              "bottom": 135.80870056152344,
+              "left": 24
+            }
+          },
+          {
+            "text": "Projects",
+            "rect": {
+              "x": 24,
+              "y": 139.80870056152344,
+              "width": 342,
+              "height": 44,
+              "top": 139.80870056152344,
+              "right": 366,
+              "bottom": 183.80870056152344,
+              "left": 24
+            }
+          },
+          {
+            "text": "About",
+            "rect": {
+              "x": 24,
+              "y": 187.80870056152344,
+              "width": 342,
+              "height": 44,
+              "top": 187.80870056152344,
+              "right": 366,
+              "bottom": 231.80870056152344,
+              "left": 24
+            }
+          },
+          {
+            "text": "Experience",
+            "rect": {
+              "x": 24,
+              "y": 235.80870056152344,
+              "width": 342,
+              "height": 44.00001525878906,
+              "top": 235.80870056152344,
+              "right": 366,
+              "bottom": 279.8087158203125,
+              "left": 24
+            }
+          },
+          {
+            "text": "Contact",
+            "rect": {
+              "x": 24,
+              "y": 283.8087158203125,
+              "width": 342,
+              "height": 44,
+              "top": 283.8087158203125,
+              "right": 366,
+              "bottom": 327.8087158203125,
+              "left": 24
+            }
+          }
+        ],
+        "escapeClosed": true
+      },
+      "errors": [],
+      "axeViolations": [
+        {
+          "id": "label-content-name-mismatch",
+          "impact": "serious",
+          "help": "Elements must have their visible text as part of their accessible name",
+          "nodes": [
+            {
+              "target": [
+                "#logo-sig"
+              ],
+              "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        },
+        {
+          "id": "landmark-one-main",
+          "impact": "moderate",
+          "help": "Document should have one main landmark",
+          "nodes": [
+            {
+              "target": [
+                "html"
+              ],
+              "failureSummary": "Fix all of the following:\n  Document does not have a main landmark"
+            }
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodes": [
+            {
+              "target": [
+                "#hero-name"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                ".hero-role"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                ".hero-quote"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                "a[download=\"My Resume(Yabetse Tesfaye).pdf\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                ".btn-secondary[target=\"_blank\"][rel=\"noopener\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                ".social-row"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                ".tech-strip"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                ".scroll-cue"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                "#projects"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                "#about"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                "#experience"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                "#contact"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "colorScheme": "light",
+      "loaderMs": 4210,
+      "roleCompleteMs": 6218,
+      "layout": {
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "bodyFont": "10px",
+        "navFont": "9.5px",
+        "projectFont": "10px",
+        "theme": "rgb(248, 251, 255)",
+        "heroActions": [
+          {
+            "text": "View Projects",
+            "rect": {
+              "x": 534.109375,
+              "y": 479.515625,
+              "width": 118.03125,
+              "height": 30,
+              "top": 479.515625,
+              "right": 652.140625,
+              "bottom": 509.515625,
+              "left": 534.109375
+            }
+          },
+          {
+            "text": "Download Resume",
+            "rect": {
+              "x": 663.140625,
+              "y": 479.515625,
+              "width": 141.359375,
+              "height": 30,
+              "top": 479.515625,
+              "right": 804.5,
+              "bottom": 509.515625,
+              "left": 663.140625
+            }
+          },
+          {
+            "text": "LinkedIn",
+            "rect": {
+              "x": 815.5,
+              "y": 479.515625,
+              "width": 90.390625,
+              "height": 30,
+              "top": 479.515625,
+              "right": 905.890625,
+              "bottom": 509.515625,
+              "left": 815.5
+            }
+          }
+        ]
+      },
+      "menu": null,
+      "errors": [],
+      "axeViolations": [
+        {
+          "id": "label-content-name-mismatch",
+          "impact": "serious",
+          "help": "Elements must have their visible text as part of their accessible name",
+          "nodes": [
+            {
+              "target": [
+                "#logo-sig"
+              ],
+              "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        },
+        {
+          "id": "landmark-one-main",
+          "impact": "moderate",
+          "help": "Document should have one main landmark",
+          "nodes": [
+            {
+              "target": [
+                "html"
+              ],
+              "failureSummary": "Fix all of the following:\n  Document does not have a main landmark"
+            }
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodes": [
+            {
+              "target": [
+                "#hero-name"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                ".hero-role"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                ".hero-quote"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                "a[download=\"My Resume(Yabetse Tesfaye).pdf\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                ".btn-secondary[target=\"_blank\"][rel=\"noopener\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                ".social-row"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                ".tech-strip"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                ".scroll-cue"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                "#projects"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                "#about"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                "#experience"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                "#contact"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "colorScheme": "dark",
+      "loaderMs": 3990,
+      "roleCompleteMs": 6009,
+      "layout": {
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "bodyFont": "10px",
+        "navFont": "9.5px",
+        "projectFont": "10px",
+        "theme": "rgb(8, 12, 18)",
+        "heroActions": [
+          {
+            "text": "View Projects",
+            "rect": {
+              "x": 534.109375,
+              "y": 479.515625,
+              "width": 118.03125,
+              "height": 30,
+              "top": 479.515625,
+              "right": 652.140625,
+              "bottom": 509.515625,
+              "left": 534.109375
+            }
+          },
+          {
+            "text": "Download Resume",
+            "rect": {
+              "x": 663.140625,
+              "y": 479.515625,
+              "width": 141.359375,
+              "height": 30,
+              "top": 479.515625,
+              "right": 804.5,
+              "bottom": 509.515625,
+              "left": 663.140625
+            }
+          },
+          {
+            "text": "LinkedIn",
+            "rect": {
+              "x": 815.5,
+              "y": 479.515625,
+              "width": 90.390625,
+              "height": 30,
+              "top": 479.515625,
+              "right": 905.890625,
+              "bottom": 509.515625,
+              "left": 815.5
+            }
+          }
+        ]
+      },
+      "menu": null,
+      "errors": [],
+      "axeViolations": [
+        {
+          "id": "label-content-name-mismatch",
+          "impact": "serious",
+          "help": "Elements must have their visible text as part of their accessible name",
+          "nodes": [
+            {
+              "target": [
+                "#logo-sig"
+              ],
+              "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        },
+        {
+          "id": "landmark-one-main",
+          "impact": "moderate",
+          "help": "Document should have one main landmark",
+          "nodes": [
+            {
+              "target": [
+                "html"
+              ],
+              "failureSummary": "Fix all of the following:\n  Document does not have a main landmark"
+            }
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodes": [
+            {
+              "target": [
+                "#hero-name"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                ".hero-role"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                ".hero-quote"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                "a[download=\"My Resume(Yabetse Tesfaye).pdf\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                ".btn-secondary[target=\"_blank\"][rel=\"noopener\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                ".social-row"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                ".tech-strip"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                ".scroll-cue"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                "#projects"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                "#about"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                "#experience"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                "#contact"
+              ],
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reducedMotionRunningAnimations": [
+    {
+      "target": "preloader"
+    },
+    {
+      "target": "preloader"
+    },
+    {
+      "target": "preloader"
+    },
+    {
+      "target": "preloader"
+    },
+    {
+      "name": "blipPulse",
+      "target": "pre-led"
+    },
+    {
+      "name": "signWrite",
+      "target": "sig"
+    },
+    {
+      "name": "signRule",
+      "target": {}
+    },
+    {
+      "name": "slideUp",
+      "target": "hero-title"
+    },
+    {
+      "name": "slideUp",
+      "target": "hero-role"
+    },
+    {
+      "name": "slideUp",
+      "target": "hero-quote"
+    },
+    {
+      "name": "slideUp",
+      "target": "hero-actions"
+    },
+    {
+      "name": "slideUp",
+      "target": "social-row"
+    },
+    {
+      "name": "slideUp",
+      "target": "tech-strip"
+    }
+  ],
+  "noJsState": {
+    "role": "",
+    "projectOpacity": "0",
+    "navVisibility": "hidden"
+  }
+}

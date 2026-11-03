@@ -1,0 +1,304 @@
+{
+  "checkedAt": "2026-11-03T15:34:22.146619+00:00",
+  "method": "HTTP GET with redirects; HTTP errors do not alone distinguish a missing page from bot protection.",
+  "local": [
+    {
+      "url": "favicon.svg",
+      "status": "ok"
+    },
+    {
+      "url": "favicon.png",
+      "status": "ok"
+    },
+    {
+      "url": "favicon.png",
+      "status": "ok"
+    },
+    {
+      "url": "style.css",
+      "status": "ok"
+    },
+    {
+      "url": "#home",
+      "status": "ok"
+    },
+    {
+      "url": "#home",
+      "status": "ok"
+    },
+    {
+      "url": "#projects",
+      "status": "ok"
+    },
+    {
+      "url": "#about",
+      "status": "ok"
+    },
+    {
+      "url": "#experience",
+      "status": "ok"
+    },
+    {
+      "url": "#contact",
+      "status": "ok"
+    },
+    {
+      "url": "#projects",
+      "status": "ok"
+    },
+    {
+      "url": "Resume/My%20Resume(Yabetse%20Tesfaye).pdf",
+      "status": "missing file"
+    },
+    {
+      "url": "#projects",
+      "status": "ok"
+    },
+    {
+      "url": "script.js",
+      "status": "ok"
+    }
+  ],
+  "external": [
+    {
+      "url": "https://a2sv.org/",
+      "sources": [
+        "pdf"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.a2sv.org/"
+    },
+    {
+      "url": "https://act.edu.et/",
+      "sources": [
+        "pdf",
+        "site"
+      ],
+      "status": 200,
+      "finalUrl": "https://act.edu.et/"
+    },
+    {
+      "url": "https://afrochat.app/en",
+      "sources": [
+        "pdf"
+      ],
+      "status": 200,
+      "finalUrl": "https://afrochat.app/en"
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css",
+      "sources": [
+        "site"
+      ],
+      "status": 200,
+      "finalUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    },
+    {
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css",
+      "sources": [
+        "site"
+      ],
+      "status": 200,
+      "finalUrl": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    },
+    {
+      "url": "https://eagle-code.com/",
+      "sources": [
+        "pdf"
+      ],
+      "status": null,
+      "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+    },
+    {
+      "url": "https://eskalate.io/",
+      "sources": [
+        "pdf"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.eskalate.io/"
+    },
+    {
+      "url": "https://fonts.googleapis.com",
+      "sources": [
+        "site"
+      ],
+      "status": null,
+      "error": "<urlopen error timed out>"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;500;700&display=swap",
+      "sources": [
+        "site"
+      ],
+      "status": null,
+      "error": "<urlopen error timed out>"
+    },
+    {
+      "url": "https://fonts.gstatic.com",
+      "sources": [
+        "site"
+      ],
+      "status": null,
+      "error": "<urlopen error timed out>"
+    },
+    {
+      "url": "https://github.com/abelkm99/pgxmock",
+      "sources": [
+        "pdf"
+      ],
+      "status": 200,
+      "finalUrl": "https://github.com/abelkm99/pgxmock"
+    },
+    {
+      "url": "https://github.com/litestar-org/litestar",
+      "sources": [
+        "pdf"
+      ],
+      "status": 200,
+      "finalUrl": "https://github.com/litestar-org/litestar"
+    },
+    {
+      "url": "https://github.com/yabtesfu",
+      "sources": [
+        "pdf",
+        "site"
+      ],
+      "status": 200,
+      "finalUrl": "https://github.com/yabtesfu"
+    },
+    {
+      "url": "https://github.com/yabtesfu/gan-lab-tensorflow",
+      "sources": [
+        "pdf"
+      ],
+      "status": 200,
+      "finalUrl": "https://github.com/yabtesfu/gan-lab-tensorflow"
+    },
+    {
+      "url": "https://github.com/yabtesfu/imustore-db-",
+      "sources": [
+        "pdf",
+        "site"
+      ],
+      "status": 200,
+      "finalUrl": "https://github.com/yabtesfu/immustore-db"
+    },
+    {
+      "url": "https://github.com/yabtesfu/nodechain-lab",
+      "sources": [
+        "site"
+      ],
+      "status": 200,
+      "finalUrl": "https://github.com/yabtesfu/nodechain-lab"
+    },
+    {
+      "url": "https://github.com/yabtesfu/rustv-os-lab",
+      "sources": [
+        "site"
+      ],
+      "status": 200,
+      "finalUrl": "https://github.com/yabtesfu/rustv-os-lab"
+    },
+    {
+      "url": "https://mail.google.com/mail/u/0/?fs=1&to=yabtesfu@gmail.com&tf=cm",
+      "sources": [
+        "site"
+      ],
+      "status": 200,
+      "finalUrl": "https://accounts.google.com/v3/signin/identifier?continue=https://mail.google.com/mail/u/0/?fs%3D1%26to%3Dyabtesfu@gmail.com%26tf%3Dcm&emr=1&followup=https://mail.google.com/mail/u/0/?fs%3D1%26to%3Dyabtesfu@gmail.com%26tf%3Dcm&osid=1&passive=1209600&service=mail&flowName=WebLiteSignIn&flowEntry=ServiceLogin&dsh=S387634606:1793719970085369"
+    },
+    {
+      "url": "https://t.me/This_is_yab",
+      "sources": [
+        "site"
+      ],
+      "status": 200,
+      "finalUrl": "https://t.me/This_is_yab"
+    },
+    {
+      "url": "https://upwork.com/",
+      "sources": [
+        "pdf"
+      ],
+      "status": 403,
+      "finalUrl": "https://upwork.com/",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://wa.me/251966331110",
+      "sources": [
+        "site"
+      ],
+      "status": null,
+      "error": "<urlopen error timed out>"
+    },
+    {
+      "url": "https://www.a2sv.org/",
+      "sources": [
+        "site"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.a2sv.org/"
+    },
+    {
+      "url": "https://www.eskalate.io/",
+      "sources": [
+        "site"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.eskalate.io/"
+    },
+    {
+      "url": "https://www.instagram.com/yab_tesfu/",
+      "sources": [
+        "site"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.instagram.com/yab_tesfu/"
+    },
+    {
+      "url": "https://www.linkedin.com/in/yabetse-tesfaye/",
+      "sources": [
+        "pdf",
+        "site"
+      ],
+      "status": 999,
+      "finalUrl": "https://www.linkedin.com/in/yabetse-tesfaye",
+      "error": "HTTP Error 999: <none>"
+    },
+    {
+      "url": "https://www.revelo.com/",
+      "sources": [
+        "pdf",
+        "site"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.revelo.com/"
+    },
+    {
+      "url": "https://www.turing.com/",
+      "sources": [
+        "pdf"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.turing.com/"
+    },
+    {
+      "url": "https://www.upwork.com/",
+      "sources": [
+        "site"
+      ],
+      "status": 403,
+      "finalUrl": "https://www.upwork.com/",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://ybalemu.vercel.app/",
+      "sources": [
+        "pdf"
+      ],
+      "status": 200,
+      "finalUrl": "https://ybalemu.vercel.app/"
+    }
+  ]
+}
