@@ -1,0 +1,57 @@
+                                                        Yabetse Tesfaye
+                                           Backend & Full-Stack Software Engineer
+              yabtesfu@gmail.com              +251966331110            Addis Ababa, Ethiopia            LinkedIn          Portfolio        GitHub
+                                                                          SUMMARY
+Backend and Full Stack Software Engineer with 6+ years of experience modernizing backend services, building internal platforms, and
+automating software delivery. Coordinated a team of six backend engineers and contributed to systems supporting 200+ employees
+across four time zones.
+                                                                   TECHNICAL SKILLS
+Programming Languages: Python, Go, JavaScript, SQL, Java, C++, Bash
+Frameworks & Databases: FastAPI, Gin, SQLAlchemy, PostgreSQL, MongoDB, Redis, Flutter, FlutterFlow
+Cloud & DevOps: GCP, Docker, Kubernetes, Git, GitHub Actions, Jenkins, CI/CD
+Testing and APIs: Pytest, Test Driven Development (TDD), REST API Development, Debugging
+                                                            PROFESSIONAL EXPERIENCE
+Revelo     , LLM Trainer, AI Data Annotation and Model Evaluation                                                                   Feb, 2026 to Oct, 2026
+• Annotated video frames for multimodal AI training, recording actions, context, and event sequences.
+• Evaluated LLM outputs with targeted prompts and response checks, documenting inconsistencies for model review.
+Turing     , LLM Trainer and AI Data Annotator                                                                                      Apr, 2025 to Feb, 2026
+• Curated multimodal training data, validating annotation consistency, accuracy, and temporal alignment.
+• Reviewed AI generated responses and reported quality gaps to inform model evaluation.
+Upwork      , FlutterFlow Mobile Application Developer                                                                              Dec, 2024 to Apr, 2025
+• Delivered responsive FlutterFlow and Flutter applications, translating client requirements into reusable interfaces and workflows.
+• Integrated REST APIs, state management, and data validation while resolving implementation issues with remote clients.
+AfroChat, Eskalate        , Backend Engineer and Project Co Lead                                                                   Jan, 2023 to Dec, 2024
+• Helped lead six backend engineers in migrating AfroChat from Flask and MongoDB to FastAPI and PostgreSQL, introducing
+  asynchronous data access with SQLAlchemy and asyncpg.
+• Refactored services using Domain Driven Design and Test Driven Development to strengthen modularity and automated testing.
+• Created GitHub Actions pipelines and Python tooling for test execution, Docker builds, and container deployment, removing
+  redundant build operations.
+Eskalate     , Full Stack Developer, Internal Tooling                                                                               Jan, 2021 to Jan, 2023
+• Built Slack and Google Sheets automation supporting internal workflows for 200+ employees across four time zones.
+• Implemented queued notifications for delivery across time zones and web tools for project reporting and employee evaluations.
+• Configured Go microservices and Kubernetes infrastructure for container orchestration, deployment, and monitoring.
+Eskalate     , Junior Full Stack Engineer                                                                                          Nov, 2019 to Jan, 2021
+• Implemented authentication, authorization, and user facing application features based on business requirements.
+• Collaborated on a software project that earned third place in a technology competition.
+                                                                          PROJECTS
+ImmuStore DB         , Python Database Engine
+• Built a learning focused database engine with copy on write B+ trees, MVCC, crash recovery, and Raft replication.
+• Added an asynchronous Redis compatible server and deterministic fault injection tests.
+Litestar    , Open-Source Contribution                                                                                                             Jul, 2024
+• Contributed to OpenTelemetry tracing and exception capture within a Python ASGI framework.
+pgxmock       , Open-Source Contribution                                                                                                           Apr, 2024
+• Extended batch query mocking for Go and PostgreSQL testing with pgx interfaces.
+GAN Observatory         , Real-Time ML Monitoring Platform
+• Created a FastAPI and WebSockets dashboard streaming GAN training metrics at approximately 20 FPS, with hyperparameter
+  controls and mode collapse detection.
+                                EDUCATION                                                                          AWARDS
+Bachelor of Software Engineering                  Sep, 2018 to Jun, 2022         1st Place, Ethiopian Competitive Programming                     Jan, 2024
+American College of Technology | ACT                                             Contest, ALX
+• CGPA: 3.82                                                                     1st Place, A2SV Project Competition, Atrons                      Sep, 2022
+Software Engineering Program                      Jan, 2022 to Mar, 2023         • $8,000 team prize
+A2SV | Africa to Silicon Valley                                                  Winner, UNDP and Ministry of Innovation and Technology                 2020
+• Data Structures and Algorithms                                                 COVID 19 Innovation Challenge
+                             VOLUNTEERING                                        Hackathon Winner, Alpha 1S Robot Bluetooth                        Apr, 2021
+Robotics Instructor        , Eagle Robotics                            2021      Control
+• Mentored 30 students in Python and Raspberry Pi robotics.                      • Reverse engineered Bluetooth protocols to enable direct robot
+                                                                                   motor control.
